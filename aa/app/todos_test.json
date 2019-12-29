@@ -1,0 +1,19 @@
+{
+    "todos": {
+        "1": {
+            "todo_id": "1",
+            "title": "MASGCompact J1 VR10 fertig auswerten",
+            "status": "finished"
+        },
+        "2": {
+            "todo_id": "2",
+            "title": "Inbetriebnahme MASGTarga Spoiler 992",
+            "status": "open"
+        },
+        "3": {
+            "todo_id": "3",
+            "title": "Inbetriebnahme MASGTarga Verdeck 992",
+            "status": "open"
+        }
+    }
+}

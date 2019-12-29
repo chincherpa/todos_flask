@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<h1>Todos</h1>
+{% if status_to_show == 'open' %}
+<button onclick="window.location.href = '/finished/';"> Toggle </button>
+{% else %}
+<button onclick="window.location.href = '/open/';"> Toggle </button>
+{% endif %}
+
+<h2>--> {{ status_to_show }}</h2>
+
+    <div id="privat">
+        {% for a, b in todos.todos.items() %}
+            {% if b.status == status_to_show and 'privat' in b.tags %}
+            <p>ID: {{ a }} {{ b.title }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div id="notprivat">
+        {% for a, b in todos.todos.items() %}
+            {% if b.status == status_to_show and 'privat' not in b.tags %}
+            <p>ID: {{ a }} {{ b.title }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+
+
+{% block content %}
+    <div class="ui stackable centered grid container">
+        <div class="twelve wide column">
+            <a class="ui basic compact button" href="{{ url_for('static', filename='style.css') }}">
+                <i class="caret left icon"></i>
+                Back to dashboard
+            </a>
+            <h2 class="ui header">
+                Add New Question
+                <div class="sub header">Create a new question</div>
+            </h2>
+
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+<div><p>Lul3f</p></div>
+{% endblock %}

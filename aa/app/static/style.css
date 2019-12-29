@@ -1,0 +1,19 @@
+
+body {
+    margin: 0px;
+    padding: 0px 0px 0px 200px;
+    font-family: Monospace;
+    color:blueviolet;
+    background-color:black;
+}
+
+#privat {
+    color:rgb(255, 136, 0);
+    /* background-color:rgb(165, 73, 73); */
+}
+
+#notprivat {
+    color:white;
+    /* background-color:rgb(28, 148, 142); */
+}
+
