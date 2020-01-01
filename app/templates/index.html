@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Todos</h1>
+{% if status_to_show == 'open' %}
+<button onclick="window.location.href = '/finished/';"> Toggle </button>
+<a href='/finished/'> Toggle </a>
+{% else %}
+<button onclick="window.location.href = '/';"> Toggle </button>
+{% endif %}
+
+<h2>--> {{ status_to_show }}</h2>
+
+<div id="privat">
+    {% for id, todo in todos.todos.items() %}
+        {% if todo.status == status_to_show and 'privat' not in todo.tags %}
+            <p href="{{ url_for('edit', todo_id=todo.id) }}">ID: {{ id }} {{ todo.title }}</p>
+            {% if comments %}
+                <p>COMMENT</p>
+                {% if comment|length > 0 %}
+                    {% for c in todo.comment %}
+                        <p>{{ c[0] }}: {{ c[1] }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</div>
+
+<div id="notprivat">
+    {% for id, todo in todos.todos.items() %}
+        {% if todo.status == status_to_show and 'privat' not in todo.tags %}
+            <p>ID: {{ id }} {{ todo.title }}</p>
+            {% if comments and comment|length > 0 %}
+            <p>c</p>
+                {% for c in todo.comment %}
+                    <p>{{ c[0] }}: {{ c[1] }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</div>
+
+<div><p>Lul3f</p></div>
+
+{% endblock %}
