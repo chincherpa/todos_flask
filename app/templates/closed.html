@@ -2,15 +2,15 @@
 
 {% block content %}
 
-<h1>open todos</h1>
-<a href='/closed/'> show closed </a>
+<h1>closed todos</h1>
+<a href='/open/'> show open </a>
 
-<a href='/open_comments/'> show comments </a>
+<a href='/closed_comments/'> show comments </a>
 
 <div id="privat">
     {% for id, todo in todos.todos.items() %}
-        {% if todo.status == "open" and 'privat' in todo.tags %}
-           <p><a href="{{ url_for('edit_todo', todo_id=todo.id) }}">edit</a> <a href="{{ url_for('close_todo', todo_id=todo.id) }}">close</a> {{ todo.id }} {{ todo.title }}</p>
+        {% if todo.status == "closed" and 'privat' in todo.tags %}
+           <p><a href="{{ url_for('edit_post', todo_id=todo.id) }}">edit</a> {{ todo.id }} {{ todo.title }}</p>
             {% if comments and todo.comments|length > 0 %}
                 {% for c in todo.comments %}
                     <p>{{ c[0] }}: {{ c[1] }}</p>
@@ -22,8 +22,8 @@
 
 <div id="notprivat">
     {% for id, todo in todos.todos.items() %}
-        {% if todo.status == "open" and 'privat' not in todo.tags %}
-        <p><a href="{{ url_for('edit_todo', todo_id=todo.id) }}">edit</a> <a href="{{ url_for('close_todo', todo_id=todo.id) }}">close</a> {{ todo.id }} {{ todo.title }}</p>
+        {% if todo.status == "closed" and 'privat' not in todo.tags %}
+            <p><a href="{{ url_for('edit_post', todo_id=todo.id) }}">edit</a> {{ todo.id }} {{ todo.title }}</p>
             {% if comments and todo.comments|length > 0 %}
                 {% for c in todo.comments %}
                     <p>{{ c[0] }}: {{ c[1] }}</p>

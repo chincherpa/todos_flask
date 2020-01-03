@@ -1,15 +1,42 @@
-{% extends "base.html" %}
+<!-- {% extends "base.html" %} -->
 
-{% block content %}
+<!-- {% block content %} -->
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+    {% if title %}
+        <title>Flask Blog - {{ title }}</title>
+    {% else %}
+        <title>Flask Blog</title>
+    {% endif %}
+</head>
+<body>
+<div class=container>
 <h1>Todos</h1>
 
 <button onclick="window.location.href = '/';"> Open </button>
 
 <h2>Edit todo</h2>
 
+<p>{{ todo.title }}</p>
+<p>{{ todo.status }}</p>
+<p>{{ todo.comments }}</p>
+<p>{{ todo.tags }}</p>
+<p>{{ todo.result }}</p>
+<p>{{ todo.date_added }}</p>
+<p>{{ todo.rem_time }}</p>
 
 
 <div><p>Lul3f</p></div>
 
-{% endblock %}
+</div>
+
+<!-- {% endblock %} -->
