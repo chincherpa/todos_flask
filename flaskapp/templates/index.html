@@ -4,13 +4,14 @@
 
 {% if status_to_show == "open" %}
     <h1>open todos</h1>
-    <p><a href='/closed/'>show closed</a>|{% if comments %}<a href='/open/'>close comments</a>{% else %}<a href='/open_comments/'>show comments</a>{% endif %}</p>
+    <p><a href='/closed/'>show closed</a>|{% if comments %}<a href='/open/'>close comments</a>
+        {% else %}<a href='/open_comments/'>show comments</a>{% endif %}</p>
 {% else %}
     <h1>closed todos</h1>
-    <p><a href='/open/'>show open</a>|{% if comments %}<a href='/closed/'>close comments</a>{% else %}<a href='/closed_comments/'>show comments</a>{% endif %}</p>
+    <p><a href='/open/'>show open</a>|{% if comments %}<a href='/closed/'>close comments</a>
+        {% else %}<a href='/closed_comments/'>show comments</a>{% endif %}</p>
 {% endif %}
 
-<p><a href='/new_todo/'>new todo</a></p>
 
 <table id="privat">
 {% for id, todo in todos.todos.items() %}
