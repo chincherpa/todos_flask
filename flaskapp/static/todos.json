@@ -1,5 +1,5 @@
 {
-    "ids": 72,
+    "ids": 75,
     "todos": {
         "1": {
             "id": "1",
@@ -31,7 +31,6 @@
                 ""
             ],
             "tags": [
-                "privat",
                 "992",
                 "MASGTarga",
                 "Spoiler"
@@ -67,7 +66,6 @@
                 ]
             ],
             "tags": [
-                "privat",
                 "992",
                 "MASGTarga",
                 "Verdeck"
@@ -1382,6 +1380,68 @@
                 "2019-12-13"
             ],
             "date_added": "2019-12-13",
+            "rem_time": ""
+        },
+        "73": {
+            "id": "73",
+            "title": "handlauf",
+            "status": "open",
+            "comments": [
+                [
+                    "Skizzen sind raus",
+                    "2019-12-19"
+                ],
+                [
+                    "Angebot angenommen, jetzt noch bezahlen",
+                    "2019-12-19"
+                ]
+            ],
+            "tags": [
+                "privat"
+            ],
+            "result": "",
+            "date_added": "2019-12-18",
+            "rem_time": ""
+        },
+        "74": {
+            "id": "74",
+            "title": "Geschenk Jakob Erdk\u00fchlschrank",
+            "status": "open",
+            "comments": [
+                [
+                    "KG Rohr 250",
+                    "2019-12-19"
+                ],
+                [
+                    "3 runde Scheiben",
+                    "2019-12-19"
+                ],
+                [
+                    "1 Stab 1m",
+                    "2019-12-19"
+                ],
+                [
+                    "Griff",
+                    "2019-12-19"
+                ]
+            ],
+            "tags": [
+                "privat"
+            ],
+            "result": "",
+            "date_added": "2019-12-19",
+            "rem_time": ""
+        },
+        "75": {
+            "id": "75",
+            "title": "ZDC MASGAero 100 schreiben",
+            "status": "open",
+            "comments": [
+                ""
+            ],
+            "tags": [],
+            "result": "",
+            "date_added": "2019-12-19",
             "rem_time": ""
         }
     }
