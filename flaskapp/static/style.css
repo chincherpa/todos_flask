@@ -1,7 +1,6 @@
 
 body {
-    margin: 20px;
-    padding: 0px 0px 0px 200px;
+    margin-top: 50px;
     font-family: Monospace;
     font-size:14px;
     color: #00ff00;
@@ -40,6 +39,13 @@ a:hover {
     text-transform: uppercase;
 }
 
+.center_this {
+    max-width: 700px;
+    margin: auto;
+    border: 1px solid rgb(0, 255, 0);
+    padding: 50px;
+}
+
 #no_underline a{
     color: #00ff00;
     padding: 0;
@@ -61,13 +67,23 @@ a:hover {
     padding: 20px 0px 0px 0px;
 }
 
-#privat td:nth-child(even) {
-    width: 600px;
+#privat {
+    border: 1px solid red;
+    width: 700px;
 }
 
-#notprivat td:nth-child(even) {
+/* #privat td:nth-child(even) {
     width: 600px;
+} */
+
+#notprivat {
+    border: 1px solid blue;
+    width: 700px;
 }
+
+/* #notprivat td:nth-child(even) {
+    width: 600px;
+} */
 
 #footer {
     color: white;
@@ -95,7 +111,7 @@ a:hover {
 .modal-content {
     background-color: black;
     margin: auto;
-    padding: 50px;
+    padding: 30px;
     border: 1px solid rgb(0, 255, 0);
     width: 550px;
 }

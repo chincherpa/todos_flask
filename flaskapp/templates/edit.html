@@ -1,14 +1,10 @@
-<!-- {% extends "base.html" %} -->
-
-<!-- {% block content %} -->
 <html>
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 
@@ -24,20 +20,32 @@
 
         <h2>Edit todo</h2>
 
-        <p>{{ todo.title }}</p>
-        <p>{{ todo.status }}</p>
-        <p>{{ todo.comments }}</p>
-        <p>{{ todo.tags }}</p>
-        <p>{{ todo.result }}</p>
-        <p>{{ todo.date_added }}</p>
-        <p>{{ todo.rem_time }}</p>
+    <form method="POST" action="">
+        <fieldset>
+            <legend>edit title</legend>
+            <div>
+            <pre>titley<input id="title" name="title" type="text" value="{{ todo.title }}"></pre>
+            </div>
+        </fieldset>
+        <a href="#">ok</a> <a href="#">cancel</a>
+    </form>
+</div>
 
-        <div>
-            <p>Lul3f</p>
-        </div>
-    </div>
+    <!-- <div class=container>
+        <h1>Todos</h1>
 
-<!-- {% endblock %} -->
+        <h2>Edit todo</h2>
+
+        <p>title {{ todo.title }}</p>
+        <p>status {{ todo.status }}</p>
+        <p>comments {{ todo.comments }}</p>
+        <p>tags {{ todo.tags }}</p>
+        <p>result {{ todo.result }}</p>
+        <p>date_added {{ todo.date_added }}</p>
+        <p>rem_time {{ todo.rem_time }}</p>
+
+    </div> -->
+
 
 </body>
 </html>
