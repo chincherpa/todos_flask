@@ -6,34 +6,30 @@
 
     <body>
 
-<p><a id="myBtn">new todo</a></p>
+<p><a id="new_todo">new todo</a></p>
 
 {% block content %}
 {% endblock %}
 
 
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-<!-- Modal content -->
-<div class="modal-content">
-<span class="close">&times;</span>
-<p>new todo:</p>
-
-
 <form method="post" action="/new_todo/">
 
-  <!-- TEXTBOX -->
-  <input class="textbox" type="text" name="new_todo_title" size="50">
-  <!-- ok buton -->
-  <input type="submit" value="ok" style="color:#0f0; border:0px #f00 solid; background-color:#000;">
+<!-- modal window -->
+<div id="myModal" class="modal">
+<!-- window content -->
+<div class="modal-content">
+<!-- close button -->
+<p><span class="close">&times;</span></p>
 
-  <!-- TESTBUTTONS -->
-  <!-- <input type="submit" value="Encrypt" name="Encrypt"/>
-  <input type="submit" value="Decrypt" name="Decrypt" /> -->
-
+<!-- title-->
+<pre>title		<input class="textbox" type="text" name="new_todo_title" size="50"></pre>
+<!-- tags -->
+<pre>tags		<input class="textbox" type="text" name="new_todo_tags" size="50"></pre>
+<!-- ok button -->
+<pre>reminder	<input class="textbox" type="date" name="new_todo_reminder" size="30"></pre>
+<!-- ok button -->
+<input type="submit" value="ok"> <!-- style="color:#0f0; border:1px #0f0 solid; background-color:#000;"> -->
 </form>
-
 
 </div>
 </div>
@@ -43,7 +39,7 @@
 var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+var btn = document.getElementById("new_todo");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -66,6 +62,8 @@ modal.style.display = "none";
 }
 </script>
 
-    </body>
-    <div id=footer><p>Lul3f</p></div>
+</body>
+
+<!-- <div id=footer><p>Lul3f</p></div> -->
+
 </html>

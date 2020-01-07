@@ -3,6 +3,7 @@ body {
     margin: 20px;
     padding: 0px 0px 0px 200px;
     font-family: Monospace;
+    font-size:14px;
     color: #00ff00;
     background-color:black;
 }
@@ -21,8 +22,7 @@ a {
     transparent 0%,
     transparent calc(50% - 5px),
     rgba(0, 255, 0, 0.35) calc(50% - 5px),
-    rgba(0, 255, 0, 0.35) 100%
-    );
+    rgba(0, 255, 0, 0.35) 100%);
     transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
     background-size: 100% 200%;
     background-position: 0 0;
@@ -35,8 +35,7 @@ a:hover {
     transparent 0%,
     transparent calc(50% - 5px),
     rgba(0, 255, 0, 1) calc(50% - 5px),
-    rgba(0, 255, 0, 1) 100%
-    );
+    rgba(0, 255, 0, 1) 100%);
     background-position: 0 100%;
     text-transform: uppercase;
 }
@@ -51,10 +50,6 @@ a:hover {
 #no_underline a:hover{
     text-transform: none;
     text-decoration: underline;
-    /* color: #0000ff; */
-    /* padding: 0;
-    background-image: none;
-    background-position: 0 100%; */
 }
 
 #privat, #notprivat {
@@ -66,16 +61,18 @@ a:hover {
     padding: 20px 0px 0px 0px;
 }
 
-/* #notprivat {
-} */
+#privat td:nth-child(even) {
+    width: 600px;
+}
+
+#notprivat td:nth-child(even) {
+    width: 600px;
+}
 
 #footer {
     color: white;
     margin: 50px 0px;
 }
-
-
-
 
 
 
@@ -98,13 +95,13 @@ a:hover {
 .modal-content {
     background-color: black;
     margin: auto;
-    padding: 100px;
+    padding: 50px;
     border: 1px solid rgb(0, 255, 0);
-    width: 50%;
+    width: 550px;
 }
 
 .textbox {
-    font-size:16px;
+    font-size:14px;
     border-color:#cccccc;
     background-color:#000000;
     color:#00ff00;
@@ -118,6 +115,12 @@ a:hover {
 
 .textbox:focus {
     outline:none;
+}
+
+input[type=submit] {
+    background-color:#000;
+    border:1px #0f0 solid;
+    color:#0f0;
 }
 
 

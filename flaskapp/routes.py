@@ -3,7 +3,7 @@ import json
 import os
 import sys
 
-from flask import render_template, request
+from flask import redirect, render_template, request
 from flaskapp import app
 from flaskapp.forms import PostForm
 
@@ -80,19 +80,24 @@ def close_todo(todo_id):
     todo_id = str(todo_id)
     todos["todos"][todo_id]["status"] = "closed"
     dump_todos_to_json()
-    return render_template( "index.html", todos=todos, status_to_show="open", comments=False, id_comments=None, )
+    return redirect('/open/')
+
 
 @app.route("/todo/<int:todo_id>/reopen")
 def reopen_todo(todo_id):
     todo_id = str(todo_id)
     todos["todos"][todo_id]["status"] = "open"
     dump_todos_to_json()
-    return render_template( "index.html", todos=todos, status_to_show="open", comments=False, id_comments=None, )
+    return redirect('/open/')
 
 
 @app.route("/new_todo/", methods=['POST'])
 def create_todo():
     new_title = request.form['new_todo_title']
+    new_tags = request.form['new_todo_tags']
+    lnew_tags_temp = new_tags.replace(" ", ",").split(",")
+    lnew_tags = list(filter(None, lnew_tags_temp))
+
     today = str(datetime.date.today())
     todos["ids"] += 1
     new_id = str(todos["ids"])
@@ -101,7 +106,7 @@ def create_todo():
         "title": new_title,
         "status": "open",
         "comments": [""],
-        "tags": [""],
+        "tags": lnew_tags,
         "result": "",
         "date_added": today,
         "rem_time": "",
