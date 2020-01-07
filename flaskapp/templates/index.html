@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<p><a id="new_todo">new todo</a></p>
+
 {% if status_to_show == "open" %}
     <h1>open todos</h1>
     <p><a href='/closed'>show closed</a>|{% if comments %}<a href='/open'>close comments</a>

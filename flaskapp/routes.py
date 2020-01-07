@@ -61,7 +61,7 @@ def closed_c():
 @app.route("/one_comments/<status>/<int:todo_id>")
 def one_comments(todo_id, status):
     todo_id = str(todo_id)
-    return render_template( "index.html", todos=todos, status_to_show=status, comments=False, id_comments=todo_id, )
+    return render_template("index.html", todos=todos, status_to_show=status, comments=False, id_comments=todo_id, )
 
 
 @app.route("/todo/<int:todo_id>/edit", methods=['GET', 'POST'])
