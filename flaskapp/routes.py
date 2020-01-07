@@ -37,62 +37,27 @@ todos = load_json()
 @app.route("/open/")
 def index():
     # todos = load_json()
-    return render_template(
-        "index.html",
-        todos=todos,
-        status_to_show="open",
-        comments=False,
-        id_comments=None,
-    )
-
+    return render_template( "index.html", todos=todos, status_to_show="open", comments=False, id_comments=None, )
 
 @app.route("/closed/")
 def closed():
     # todos = load_json()
-    return render_template(
-        "index.html",
-        todos=todos,
-        status_to_show="closed",
-        comments=False,
-        id_comments=None,
-    )
-
+    return render_template( "index.html", todos=todos, status_to_show="closed", comments=False, id_comments=None, )
 
 @app.route("/open_comments/")
 def open_c():
     # todos = load_json()
-    return render_template(
-        "index.html",
-        todos=todos,
-        status_to_show="open",
-        comments=True,
-        id_comments=None,
-    )
-
+    return render_template( "index.html", todos=todos, status_to_show="open", comments=True, id_comments=None, )
 
 @app.route("/closed_comments/")
 def closed_c():
     # todos = load_json()
-    return render_template(
-        "index.html",
-        todos=todos,
-        status_to_show="closed",
-        comments=True,
-        id_comments=None,
-    )
-
+    return render_template( "index.html", todos=todos, status_to_show="closed", comments=True, id_comments=None, )
 
 @app.route("/one_comments/<status>/<int:todo_id>")
 def one_comments(todo_id, status):
     todo_id = str(todo_id)
-    return render_template(
-        "index.html",
-        todos=todos,
-        status_to_show=status,
-        comments=False,
-        id_comments=todo_id,
-    )
-
+    return render_template( "index.html", todos=todos, status_to_show=status, comments=False, id_comments=todo_id, )
 
 @app.route("/todo/<int:todo_id>/edit")
 def edit_todo(todo_id):
@@ -115,35 +80,22 @@ def close_todo(todo_id):
     todo_id = str(todo_id)
     todos["todos"][todo_id]["status"] = "closed"
     dump_todos_to_json()
-    return render_template(
-        "index.html",
-        todos=todos,
-        status_to_show="open",
-        comments=False,
-        id_comments=None,
-    )
-
+    return render_template( "index.html", todos=todos, status_to_show="open", comments=False, id_comments=None, )
 
 @app.route("/todo/<int:todo_id>/reopen")
 def reopen_todo(todo_id):
     todo_id = str(todo_id)
     todos["todos"][todo_id]["status"] = "open"
     dump_todos_to_json()
-    return render_template(
-        "index.html",
-        todos=todos,
-        status_to_show="open",
-        comments=False,
-        id_comments=None,
-    )
+    return render_template( "index.html", todos=todos, status_to_show="open", comments=False, id_comments=None, )
 
 
-@app.route("/new_todo/")
+@app.route("/new_todo/", methods=['POST'])
 def create_todo():
+    new_title = request.form['new_todo_title']
     today = str(datetime.date.today())
     todos["ids"] += 1
     new_id = str(todos["ids"])
-    new_title = "TESTEST Todo"
     todos["todos"][new_id] = {
         "id": new_id,
         "title": new_title,
@@ -155,13 +107,18 @@ def create_todo():
         "rem_time": "",
     }
     dump_todos_to_json()
-    return render_template(
-        "index.html",
-        todos=todos,
-        status_to_show="open",
-        comments=False,
-        id_comments=None,
-    )
+    return render_template("index.html", todos=todos, status_to_show="open", comments=False, id_comments=None,)
+
+
+# @app.route("/new_todo/"
+# def testfunc():
+#     print(request.method)
+
+#     text = request.form['new_todo_title']
+#     processed_text = text.upper()
+#     print(processed_text)
+
+#     return render_template( "index.html", todos=todos, status_to_show="open", comments=False, id_comments=None, )
 
 
 if __name__ == "__main__":
