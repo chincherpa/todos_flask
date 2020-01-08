@@ -1,10 +1,9 @@
-
 body {
-    margin-top: 50px;
+    background-color:black;
+    color: #00ff00;
     font-family: Monospace;
     font-size:14px;
-    color: #00ff00;
-    background-color:black;
+    margin-top: 50px;
 }
 
 body h1{
@@ -40,7 +39,7 @@ a:hover {
 }
 
 .center_this {
-    max-width: 700px;
+    max-width: 780;
     margin: auto;
     border: 1px solid rgb(0, 255, 0);
     padding: 50px;
@@ -53,6 +52,10 @@ a:hover {
     background-position: 0 100%;
 }
 
+/* #btn {
+    border: 1px solid rgb(0, 255, 0);
+} */
+
 #no_underline a:hover{
     text-transform: none;
     text-decoration: underline;
@@ -62,34 +65,39 @@ a:hover {
     line-height: 12pt;
 }
 
-
 #privat {
     padding: 20px 0px 0px 0px;
 }
 
-#privat {
-    /* border: 1px solid red; */
-    width: 700px;
+#privat td:nth-child(4) {
+    color: white;
 }
 
-/* #privat td:nth-child(even) {
-    width: 600px;
-} */
-
-#notprivat {
-    /* border: 1px solid blue; */
-    width: 700px;
+#privat td:nth-child(5) {
+    color: white;
 }
 
-/* #notprivat td:nth-child(even) {
-    width: 600px;
-} */
+#privat td:nth-child(4) a {
+    color: white;
+}
+
+#notprivat td:nth-child(4) {
+    color: white;
+}
+
+#notprivat td:nth-child(5) {
+    color: white;
+}
+
+#notprivat td:nth-child(4) a {
+    color: white;
+}
+
 
 #footer {
     color: white;
     margin: 50px 0px;
 }
-
 
 
 /* The Modal (background) */
@@ -123,7 +131,7 @@ a:hover {
     color:#00ff00;
     border: 1px solid rgb(0, 255, 0);
     padding:10px;
-    text-align:center;
+    /* text-align:center; */
     font-family:monospace;
     font-style:italic;
     font-weight:normal;
@@ -131,6 +139,12 @@ a:hover {
 
 .textbox:focus {
     outline:none;
+}
+
+input[type=button] {
+    background-color:#000;
+    border:1px #0f0 solid;
+    color:#0f0;
 }
 
 input[type=submit] {

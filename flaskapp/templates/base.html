@@ -1,11 +1,11 @@
 <html>
-    <head>
-        <title>Todos</title>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-    </head>
+<head>
+<title>Todos</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
 
-    <body>
-        <div class="center_this">
+<body>
+<div class="center_this">
 
 
 {% block content %}
@@ -27,7 +27,7 @@
             <!-- reminder -->
             <pre>reminder	<input type="date" class="textbox" name="new_todo_reminder" size="30"></pre>  <!-- id="todaysDate" heutiges Datum eintragen-->
             <!-- ok button -->
-            <input type="submit" value="ok">
+            <input type="submit" value="ok"> <input type="button" onclick="location.href='/open';" value="cancel"/>
             <!-- <input type="reset" value="cancel" id="cancel"> -->
         </div>
     </div>

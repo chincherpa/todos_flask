@@ -3,11 +3,19 @@
 {% block content %}
     <h1>edit todo</h1>
 
-    <form method="POST" action="">
-        <div>
-        <pre>title	<input type="text" class="textbox" name="title" size="75" value="{{ todo.title }}"></pre>
-        </div>
-        <a href="#">ok</a> <a href="#">cancel</a>
+    <form method="POST" action="/edit_todo/{{ todo.id }}">
+    <div>
+    <pre>title		<input type="text" class="textbox" name="title" size="75" value="{{ todo.title }}"></pre>
+
+    {% if todo.comments|length > 1 %}
+        {% for c in todo.comments %}
+        <pre>comment {{loop.index}}	<input type="text" class="textbox" name="comment_{{loop.index}}" size="75" value="{{ c[0] }}"></pre>
+        {% endfor %}
+    {% endif %}
+    <pre>new comment	<input type="text" class="textbox" name="new_comment" size="75"></pre>
+
+    <input type="submit" value="ok"> <input type="button" onclick="location.href='/open';" value="cancel"/>
+    </div>
     </form>
 </div>
 

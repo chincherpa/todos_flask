@@ -1222,8 +1222,12 @@
                     "2019-12-10"
                 ],
                 [
-                    "bei Dr. Hetzel",
+                    "bei Dr. Hetzel ok",
                     "2019-12-11"
+                ],
+                [
+                    "Dr. Hetzel hat abgegeben",
+                    "2020-01-08"
                 ]
             ],
             "tags": [],
@@ -1446,19 +1450,17 @@
         },
         "76": {
             "id": "76",
-            "title": "qwe",
-            "status": "closed",
+            "title": "MASG LH reviewen",
+            "status": "open",
             "comments": [
                 ""
             ],
             "tags": [
-                "tag1",
-                "tag2",
-                "tag3"
+                "MASG"
             ],
             "result": "",
-            "date_added": "2020-01-07",
-            "rem_time": ""
+            "date_added": "2020-01-08",
+            "rem_time": "2020-01-17"
         }
     }
 }
