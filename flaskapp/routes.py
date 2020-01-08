@@ -3,7 +3,7 @@ import json
 import os
 import sys
 
-from flask import redirect, render_template, request
+from flask import redirect, render_template, request, send_from_directory
 from flaskapp import app
 from flaskapp.forms import PostForm
 
@@ -12,6 +12,11 @@ APP_STATIC = os.path.join(APP_ROOT, "static")
 
 global todos
 path_to_js = os.path.join(APP_STATIC, "todos.json")
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
 def dump_todos_to_json():
