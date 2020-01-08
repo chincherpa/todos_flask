@@ -126,7 +126,7 @@ def edit_todo(todo_id):
             form.comment_9.data,
             form.comment_10.data,
         ]
-        if len(todo_dic["comments"]) > 1:
+        if len(todo_dic["comments"]) > 0:
             for i, c in enumerate(todo_dic["comments"]):
                 lcommentdata[i] = c[0]
 
@@ -168,7 +168,7 @@ def create_todo():
         "id": new_id,
         "title": new_title,
         "status": "open",
-        "comments": [""],
+        "comments": [],
         "tags": lnew_tags,
         "result": "",
         "date_added": today,

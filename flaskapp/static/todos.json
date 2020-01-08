@@ -27,9 +27,7 @@
             "id": "2",
             "title": "Inbetriebnahme MASGTarga Spoiler 992",
             "status": "open",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "992",
                 "MASGTarga",
@@ -123,9 +121,7 @@
             "id": "6",
             "title": "LiftSG: ZDC-Kodierung in POST",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "992",
                 "Lift",
@@ -139,12 +135,8 @@
             "id": "7",
             "title": "Papier bestellen",
             "status": "closed",
-            "comments": [
-                ""
-            ],
-            "tags": [
-                ""
-            ],
+            "comments": [],
+            "tags": [],
             "result": "",
             "date_added": "2019-10-18",
             "rem_time": ""
@@ -153,9 +145,7 @@
             "id": "8",
             "title": "Termin Dr. Brauchle",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "privat"
             ],
@@ -189,9 +179,7 @@
             "id": "10",
             "title": "Heckrollo Alan EXAM Tests verbessern ",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "G2",
                 "Heckrollo",
@@ -208,9 +196,7 @@
             "id": "11",
             "title": "Heckrollo Alan Spielschutzcheck in der PRE ",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "Alan",
                 "G2",
@@ -227,9 +213,7 @@
             "id": "12",
             "title": "SCRUM in Gruppe? Vorschlag Pascal ",
             "status": "open",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "AG3",
                 "Pascal",
@@ -243,9 +227,7 @@
             "id": "13",
             "title": "SAD SAD_Verfahren weitermachen ",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "992",
                 "SAD",
@@ -259,9 +241,7 @@
             "id": "14",
             "title": "SAD 992 VR14 ",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "992",
                 "VR",
@@ -279,9 +259,7 @@
             "id": "15",
             "title": "Alan VW-DOORS ",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "Alan",
                 "Doors"
@@ -386,9 +364,7 @@
                     "2019-10-18"
                 ]
             ],
-            "tags": [
-                ""
-            ],
+            "tags": [],
             "result": [
                 "alles beantragt",
                 "2019-10-21"
@@ -400,12 +376,8 @@
             "id": "20",
             "title": "tasks: NEU Datum eintragen",
             "status": "closed",
-            "comments": [
-                ""
-            ],
-            "tags": [
-                ""
-            ],
+            "comments": [],
+            "tags": [],
             "result": [
                 "Ok",
                 "2019-10-18"
@@ -498,12 +470,8 @@
             "id": "23",
             "title": "VR-\u00dcbersicht",
             "status": "closed",
-            "comments": [
-                ""
-            ],
-            "tags": [
-                ""
-            ],
+            "comments": [],
+            "tags": [],
             "result": "",
             "date_added": "2019-10-18",
             "rem_time": ""
@@ -530,9 +498,7 @@
                     "2019-11-12"
                 ]
             ],
-            "tags": [
-                ""
-            ],
+            "tags": [],
             "result": [
                 "Antrag l\u00e4uft",
                 "2019-11-12"
@@ -599,12 +565,8 @@
             "id": "27",
             "title": "Attest bei Helen holen",
             "status": "closed",
-            "comments": [
-                ""
-            ],
-            "tags": [
-                ""
-            ],
+            "comments": [],
+            "tags": [],
             "result": [
                 "",
                 "2019-10-21"
@@ -640,9 +602,7 @@
             "id": "29",
             "title": "Antr\u00e4ge neue MA",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [],
             "result": [
                 "l\u00e4uft",
@@ -655,9 +615,7 @@
             "id": "30",
             "title": "992 VR13.1Ni2 MASGAero Tests",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "high",
                 "992"
@@ -673,9 +631,7 @@
             "id": "31",
             "title": "MASGTarga zweite Pumpe?",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "992",
                 "targa",
@@ -692,9 +648,7 @@
             "id": "32",
             "title": "MASGTarga zweiten Haken?",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "992",
                 "targa",
@@ -730,9 +684,7 @@
             "id": "34",
             "title": "MASGTarga aktuell verbaute HW nutzen",
             "status": "open",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [],
             "result": "",
             "date_added": "2019-11-13",
@@ -742,9 +694,7 @@
             "id": "35",
             "title": "MASGTarga weiteren Hallsensor simulieren lassen -> Kapche",
             "status": "open",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [],
             "result": "",
             "date_added": "2019-11-13",
@@ -769,9 +719,7 @@
             "id": "37",
             "title": "EVLS J1 VR8.5",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [],
             "result": [
                 "fertig",
@@ -784,9 +732,7 @@
             "id": "38",
             "title": "Bad: Linke fragen Panels \u00fcberall?",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "privat"
             ],
@@ -801,9 +747,7 @@
             "id": "39",
             "title": "Erstattung Laternen Amazon",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "privat"
             ],
@@ -838,9 +782,7 @@
             "id": "41",
             "title": "Daniel PDMS",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "Antr\u00e4ge"
             ],
@@ -855,9 +797,7 @@
             "id": "42",
             "title": "Daniel EXAM",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "Antr\u00e4ge"
             ],
@@ -872,9 +812,7 @@
             "id": "43",
             "title": "Daniel VWDOORS",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "Antr\u00e4ge"
             ],
@@ -909,9 +847,7 @@
             "id": "45",
             "title": "Daniel PFIFF",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "Antr\u00e4ge"
             ],
@@ -946,9 +882,7 @@
             "id": "47",
             "title": "Hongze PDMS",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "Antr\u00e4ge"
             ],
@@ -963,9 +897,7 @@
             "id": "48",
             "title": "Hongze EXAM",
             "status": "open",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "Antr\u00e4ge"
             ],
@@ -977,9 +909,7 @@
             "id": "49",
             "title": "Hongze VWDOORS",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "Antr\u00e4ge"
             ],
@@ -1014,9 +944,7 @@
             "id": "51",
             "title": "Hongze PFIFF",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "Antr\u00e4ge"
             ],
@@ -1031,9 +959,7 @@
             "id": "52",
             "title": "SAD \u00fcber IL versorgen",
             "status": "open",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [],
             "result": "",
             "date_added": "2019-11-21",
@@ -1043,9 +969,7 @@
             "id": "53",
             "title": "SAD LH bekommt Pascal, dann importieren",
             "status": "open",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [],
             "result": "",
             "date_added": "2019-11-21",
@@ -1055,9 +979,7 @@
             "id": "54",
             "title": "20000 wegen Johannes VW-DOORS anrufen",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [],
             "result": [
                 "Antrag wird neu gestellt",
@@ -1092,9 +1014,7 @@
             "id": "56",
             "title": "Ums\u00e4tze replace, Selection, wenn mehr als 1 Reihe selektiert ist",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "privat"
             ],
@@ -1140,9 +1060,7 @@
             "id": "58",
             "title": "Ehoch3-Abstimmung BSP",
             "status": "open",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [],
             "result": "",
             "date_added": "2019-11-26",
@@ -1152,9 +1070,7 @@
             "id": "59",
             "title": "Ehoch3-Abstimmung Heckrollo, gibt's eins?",
             "status": "open",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [],
             "result": "",
             "date_added": "2019-11-26",
@@ -1164,9 +1080,7 @@
             "id": "60",
             "title": "Ehoch3-Abstimmung Spoiler, mit Pascal",
             "status": "open",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [],
             "result": "",
             "date_added": "2019-11-26",
@@ -1194,9 +1108,7 @@
             "id": "62",
             "title": "Verdeck TS kopieren zu Targa TS",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "992",
                 "masgtarga"
@@ -1239,9 +1151,7 @@
             "id": "64",
             "title": "Ablauf Verdeck an Kapche",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [],
             "result": [
                 "Email gesendet",
@@ -1254,9 +1164,7 @@
             "id": "65",
             "title": "Daniel, Li Ki-Gruppe hinzuf\u00fcgen",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "EXAM"
             ],
@@ -1295,9 +1203,7 @@
             "id": "67",
             "title": "SAD 992 init FSP l\u00f6schen",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [],
             "result": [
                 "ok",
@@ -1310,9 +1216,7 @@
             "id": "68",
             "title": "Kapche nachfragen Verfahrvorgang Verdeck",
             "status": "open",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [],
             "result": "",
             "date_added": "2019-12-10",
@@ -1340,9 +1244,7 @@
             "id": "70",
             "title": "Todos deutsch/englisch",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [
                 "privat"
             ],
@@ -1375,9 +1277,7 @@
             "id": "72",
             "title": "SAD IstWerte Temp",
             "status": "closed",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [],
             "result": [
                 "",
@@ -1440,9 +1340,7 @@
             "id": "75",
             "title": "ZDC MASGAero 100 schreiben",
             "status": "open",
-            "comments": [
-                ""
-            ],
+            "comments": [],
             "tags": [],
             "result": "",
             "date_added": "2019-12-19",
@@ -1453,7 +1351,10 @@
             "title": "MASG LH reviewen",
             "status": "open",
             "comments": [
-                ""
+                [
+                    "test1",
+                    "2020-01-08"
+                ]
             ],
             "tags": [
                 "MASG"
