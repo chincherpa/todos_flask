@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 <!-- <p><a id="new_todo">new todo</a></p> -->
 
 {% if status_to_show == "open" %}
@@ -41,20 +40,12 @@
     {% endif %}
 </td>
 </tr>
-{% if comments and todo.comments|length > 0 %}
-{% for c in todo.comments %}
-<tr>
-<td></td><td></td><td></td><td>&nbsp;&nbsp;- {{ c[0] }}</td><td>{{ c[1] }}</td>
-</tr>
-{% endfor %}
-{% elif id_comments != None %}
-{% if todo.id == id_comments %}
-{% for c in todo.comments %}
-<tr>
-<td></td><td></td><td></td><td>&nbsp;&nbsp;- {{ c[0] }}</td><td>{{ c[1] }}</td>
-</tr>
-{% endfor %}
-{% endif %}
+{% if (comments and todo.comments|length > 0) or (todo.id == id_comments)%}
+    {% for c in todo.comments %}
+        <tr>
+        <td></td><td></td><td></td><td>&nbsp;&nbsp;- {{ c[0] }}</td><td>{{ c[1] }}</td>
+        </tr>
+    {% endfor %}
 {% endif %}
 {% endif %}
 {% endfor %}
@@ -89,20 +80,19 @@
     {% endif %}
 </td>
 </tr>
-{% if comments and todo.comments|length > 0 %}
-{% for c in todo.comments %}
-<tr>
-<td></td><td></td><td></td><td>&nbsp;&nbsp;- {{ c[0] }}</td><td>{{ c[1] }}</td>
-</tr>
-{% endfor %}
-{% elif id_comments != None %}
-{% if todo.id == id_comments %}
-{% for c in todo.comments %}
-<tr>
-<td></td><td></td><td></td><td>&nbsp;&nbsp;- {{ c[0] }}</td><td>{{ c[1] }}</td>
-</tr>
-{% endfor %}
-{% endif %}
+{% if (comments and todo.comments|length > 0) or (todo.id == id_comments)%}
+    {% for comment in todo.comments %}
+        <tr>
+        <td></td><td></td><td></td><td>&nbsp;&nbsp;- {{ comment[0] }}</td><td>{{ comment[1] }}</td>
+        </tr>
+    {% endfor %}
+    {% if todo.tags|length > 0 %}
+    {% for tag in todo.tags %}
+        <tr>
+        <td></td><td></td><td></td><td>&nbsp;&nbsp;- {{ tag }}</td><td></td>
+        </tr>
+    {% endfor %}
+    {% endif %}
 {% endif %}
 {% endif %}
 {% endfor %}
