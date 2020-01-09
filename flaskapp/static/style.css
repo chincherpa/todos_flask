@@ -6,7 +6,7 @@ body {
     margin-top: 25px;
 }
 
-body h1{
+body h1, h2{
     color: white;
 }
 
@@ -66,6 +66,24 @@ a:hover {
 
 #privat, #notprivat {
     line-height: 12pt;
+}
+
+#upcoming {
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 40px;
+    border: 1px solid rgb(0, 255, 0);
+}
+
+#upcoming td:nth-child(4) {
+    color: white;
+}
+
+#upcoming td:nth-child(5) {
+    color: white;
+}
+
+#upcoming td:nth-child(4) a {
+    color: white;
 }
 
 #privat {
