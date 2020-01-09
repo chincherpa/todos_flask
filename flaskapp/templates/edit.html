@@ -7,7 +7,7 @@
     <div>
     <pre>title		<input type="text" class="textbox" name="title" size="75" value="{{ todo.title }}"></pre>
 
-    {% if todo.comments|length > 1 %}
+    {% if todo.comments|length > 0 %}
         {% for c in todo.comments %}
         <pre>comment {{loop.index}}	<input type="text" class="textbox" name="comment_{{loop.index}}" size="75" value="{{ c[0] }}"></pre>
         {% endfor %}

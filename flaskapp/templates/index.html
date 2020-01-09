@@ -27,7 +27,7 @@
 <td id="no_underline" style="width:600px">
     {% if todo.id == id_comments %}
     <a href='/{{ status_to_show}}'>{{ todo.title }}</a>
-    {% elif todo.comments|length > 0 %}
+    {% elif todo.comments|length > 0 or todo.tags|length > 0 %}
     <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">{{ todo.title }}</a>
     {% else %}
     {{ todo.title }}
@@ -35,17 +35,22 @@
 </td>
 <td id="no_underline">
     {% if todo.id == id_comments %}<a href='/{{ status_to_show}}'>-</a>
-    {% elif todo.comments|length > 0 %}
+    {% elif todo.comments|length > 0 or todo.tags|length > 0 %}
     <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">+</a>
     {% endif %}
 </td>
 </tr>
 {% if (comments and todo.comments|length > 0) or (todo.id == id_comments)%}
-    {% for c in todo.comments %}
+    {% for comment in todo.comments %}
         <tr>
-        <td></td><td></td><td></td><td>&nbsp;&nbsp;- {{ c[0] }}</td><td>{{ c[1] }}</td>
+        <td></td><td></td><td></td><td>&nbsp;- {{ comment[0] }}</td><td>{{ comment[1] }}</td>
         </tr>
     {% endfor %}
+    {% if todo.tags|length > 0 %}
+        <tr>
+        <td></td><td></td><td></td><td style="color: rgb(168, 168, 0)">&nbsp;{% for tag in todo.tags %}*{{ tag }} {% endfor %}</td><td></td>
+        </tr>
+    {% endif %}
 {% endif %}
 {% endif %}
 {% endfor %}
@@ -67,7 +72,7 @@
 <td id="no_underline" style="width:600px">
     {% if todo.id == id_comments %}
     <a href='/{{ status_to_show}}'>{{ todo.title }}</a>
-    {% elif todo.comments|length > 0 %}
+    {% elif todo.comments|length > 0 or todo.tags|length > 0 %}
     <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">{{ todo.title }}</a>
     {% else %}
     {{ todo.title }}
@@ -75,23 +80,23 @@
 </td>
 <td id="no_underline">
     {% if todo.id == id_comments %}<a href='/{{ status_to_show}}'>-</a>
-    {% elif todo.comments|length > 0 %}
+    {% elif todo.comments|length > 0 or todo.tags|length > 0 %}
     <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">+</a>
     {% endif %}
 </td>
 </tr>
-{% if (comments and todo.comments|length > 0) or (todo.id == id_comments)%}
-    {% for comment in todo.comments %}
-        <tr>
-        <td></td><td></td><td></td><td>&nbsp;&nbsp;- {{ comment[0] }}</td><td>{{ comment[1] }}</td>
-        </tr>
-    {% endfor %}
+{% if comments or (todo.id == id_comments) %}
+    {% if todo.comments|length > 0  %}
+        {% for comment in todo.comments %}
+            <tr>
+            <td></td><td></td><td></td><td>&nbsp;- {{ comment[0] }}</td><td>{{ comment[1] }}</td>
+            </tr>
+        {% endfor %}
+    {% endif %}
     {% if todo.tags|length > 0 %}
-    {% for tag in todo.tags %}
         <tr>
-        <td></td><td></td><td></td><td>&nbsp;&nbsp;- {{ tag }}</td><td></td>
+        <td></td><td></td><td></td><td style="color: rgb(168, 168, 0)">&nbsp;{% for tag in todo.tags %}*{{ tag }} {% endfor %}</td style="color: rgb(168, 168, 0)"><td></td>
         </tr>
-    {% endfor %}
     {% endif %}
 {% endif %}
 {% endif %}
