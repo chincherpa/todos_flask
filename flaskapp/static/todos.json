@@ -1,5 +1,5 @@
 {
-    "ids": 78,
+    "ids": 79,
     "todos": {
         "1": {
             "id": "1",
@@ -1289,7 +1289,7 @@
         "73": {
             "id": "73",
             "title": "handlauf",
-            "status": "open",
+            "status": "closed",
             "comments": [
                 [
                     "Skizzen sind raus",

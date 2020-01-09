@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!-- <p><a id="new_todo">new todo</a></p> -->
+<p><a id="new_todo">new todo</a></p>
 
 {% if status_to_show == "open" %}
-<pre><h1 style="display:inline;">open todos</h1>                                                                       <a id="new_todo">new todo</a></pre>
+<h1 style="display:inline;">open todos</h1>
 <p><a href='/closed'>show closed</a>|{% if comments %}<a href='/open'>close comments</a>
 {% else %}<a href='/open_comments'>show comments</a>{% endif %}</p>
 {% else %}
-<h1>closed todos</h1>
+<h1 style="display:inline;">closed todos</h1>
 <p><a href='/open'>show open</a>|{% if comments %}<a href='/closed'>close comments</a>
 {% else %}<a href='/closed_comments'>show comments</a>{% endif %}</p>
 {% endif %}
@@ -18,25 +18,25 @@
 {% if todo.status == status_to_show and 'privat' in todo.tags %}
 <tr>
 {% if status_to_show == "open" %}
-<td><a href="{{ url_for('close_todo', todo_id=todo.id) }}">close</a></td>
-<td><a href="{{ url_for('edit_todo', todo_id=todo.id) }}">edit</a></td>
+    <td><a href="{{ url_for('close_todo', todo_id=todo.id) }}">close</a></td>
+    <td><a href="{{ url_for('edit_todo', todo_id=todo.id) }}">edit</a></td>
 {% else %}
-<td><a href="{{ url_for('reopen_todo', todo_id=todo.id) }}">reopen</a></td>
+    <td><a href="{{ url_for('reopen_todo', todo_id=todo.id) }}">reopen</a></td>
+    <td></td>
 {% endif %}
 <td>{{ todo.id }}</td>
 <td id="no_underline" style="width:600px">
     {% if todo.id == id_comments %}
-    <a href='/{{ status_to_show}}'>{{ todo.title }}</a>
-    {% elif todo.comments|length > 0 or todo.tags|length > 0 %}
-    <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">{{ todo.title }}</a>
+        <a href='/{{ status_to_show}}'>{{ todo.title }}</a>
     {% else %}
-    {{ todo.title }}
+        <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">{{ todo.title }}</a>
     {% endif %}
 </td>
 <td id="no_underline">
-    {% if todo.id == id_comments %}<a href='/{{ status_to_show}}'>-</a>
+    {% if todo.id == id_comments %}
+        <a href='/{{ status_to_show}}'>-</a>
     {% elif todo.comments|length > 0 or todo.tags|length > 0 %}
-    <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">+</a>
+        <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">+</a>
     {% endif %}
 </td>
 </tr>
@@ -55,35 +55,32 @@
 {% endif %}
 {% endfor %}
 </table>
-
-<p>####################################################################################################</p>
-
+.
 <table id="notprivat">
 {% for id, todo in todos.todos.items() %}
 {% if todo.status == status_to_show and 'privat' not in todo.tags %}
 <tr>
 {% if status_to_show == "open" %}
-<td><a href="{{ url_for('close_todo', todo_id=todo.id) }}">close</a></td>
-<td><a href="{{ url_for('edit_todo', todo_id=todo.id) }}">edit</a></td>
+    <td><a href="{{ url_for('close_todo', todo_id=todo.id) }}">close</a></td>
+    <td><a href="{{ url_for('edit_todo', todo_id=todo.id) }}">edit</a></td>
 {% else %}
-<td><a href="{{ url_for('reopen_todo', todo_id=todo.id) }}">reopen</a></td>
+    <td><a href="{{ url_for('reopen_todo', todo_id=todo.id) }}">reopen</a></td>
+    <td></td>
 {% endif %}
-<td>{{ todo.id }}</td>
-<td id="no_underline" style="width:600px">
-    {% if todo.id == id_comments %}
-    <a href='/{{ status_to_show}}'>{{ todo.title }}</a>
-    {% elif todo.comments|length > 0 or todo.tags|length > 0 %}
-    <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">{{ todo.title }}</a>
-    {% else %}
-    {{ todo.title }}
-    {% endif %}
-</td>
-<td id="no_underline">
-    {% if todo.id == id_comments %}<a href='/{{ status_to_show}}'>-</a>
-    {% elif todo.comments|length > 0 or todo.tags|length > 0 %}
-    <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">+</a>
-    {% endif %}
-</td>
+    <td>{{ todo.id }}</td>
+    <td id="no_underline" style="width:600px">
+        {% if todo.id == id_comments %}
+        <a href='/{{ status_to_show}}'>{{ todo.title }}</a>
+        {% else %}
+        <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">{{ todo.title }}</a>
+        {% endif %}
+    </td>
+    <td id="no_underline">
+        {% if todo.id == id_comments %}<a href='/{{ status_to_show}}'>-</a>
+        {% elif todo.comments|length > 0 or todo.tags|length > 0 %}
+        <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">+</a>
+        {% endif %}
+    </td>
 </tr>
 {% if comments or (todo.id == id_comments) %}
     {% if todo.comments|length > 0  %}
@@ -102,7 +99,5 @@
 {% endif %}
 {% endfor %}
 </table>
-
-<p>----------------------------------------------------------------------------------------------------</p>
 
 {% endblock %}

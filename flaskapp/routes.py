@@ -109,28 +109,14 @@ def edit_todo(todo_id):
         if form.new_comment.data:
             todos["todos"][todo_id]["comments"].append([form.new_comment.data, today])
 
+        new_tags = form.tags.data
+        lnew_tags_temp = new_tags.replace(" ", ",").split(",")
+        lnew_tags = list(filter(None, lnew_tags_temp))
+        todos["todos"][todo_id]["tags"] = lnew_tags
+
         dump_todos_to_json()
         return redirect('/open')
 
-    elif request.method == "GET":
-        form.title.data = todo_dic["title"]
-        lcommentdata = [
-            form.comment_1.data,
-            form.comment_2.data,
-            form.comment_3.data,
-            form.comment_4.data,
-            form.comment_5.data,
-            form.comment_6.data,
-            form.comment_7.data,
-            form.comment_8.data,
-            form.comment_9.data,
-            form.comment_10.data,
-        ]
-        if len(todo_dic["comments"]) > 0:
-            for i, c in enumerate(todo_dic["comments"]):
-                lcommentdata[i] = c[0]
-
-    # return render_template('edit.html', todo=todo_dic)
     return render_template("edit.html", form=form, todo=todo_dic)
 
 

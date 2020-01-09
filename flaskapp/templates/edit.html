@@ -8,13 +8,19 @@
     <pre>title		<input type="text" class="textbox" name="title" size="75" value="{{ todo.title }}"></pre>
 
     {% if todo.comments|length > 0 %}
-        {% for c in todo.comments %}
-        <pre>comment {{loop.index}}	<input type="text" class="textbox" name="comment_{{loop.index}}" size="75" value="{{ c[0] }}"></pre>
+        {% for comment in todo.comments %}
+        <pre>comment {{loop.index}}	<input type="text" class="textbox" name="comment_{{loop.index}}" size="75" value="{{ comment[0] }}"></pre>
         {% endfor %}
     {% endif %}
     <pre>new comment	<input type="text" class="textbox" name="new_comment" size="75"></pre>
+    {% if todo.tags|length > 0 %}
+        <pre>tags		<input type="text" class="textbox" name="tags" size="75" value="{% for tag in todo.tags %}{{ tag }}, {% endfor %}"></pre>
+    {% endif %}
 
-    <input type="submit" value="ok"> <input type="button" onclick="location.href='/open';" value="cancel"/>
+    <input type="submit" value="ok">
+    <input type="button" onclick="location.href='/open';" value="cancel"/>
+    <input type="button" onclick="location.href='{{ url_for('close_todo', todo_id=todo.id) }}';" value="close" style="border:1px #f00 solid; color:#f00;
+"/>
     </div>
     </form>
 </div>
