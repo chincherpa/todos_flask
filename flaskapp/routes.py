@@ -14,16 +14,14 @@ global todos
 path_to_js = os.path.join(APP_STATIC, "todos.json")
 
 
-@app.route('/favicon.ico')
+@app.route("/favicon.ico")
 def favicon():
-  return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+  return send_from_directory(os.path.join(app.root_path, "static"), "favicon.ico", mimetype="image/vnd.microsoft.icon")
 
 
 def dump_todos_to_json():
-  print("saving...")
   with open(path_to_js, "w") as f:
     json.dump(todos, f, indent=4)
-  print("saved!")
 
 
 def load_json():
@@ -46,58 +44,79 @@ def get_ids_to_remind():
   dateformat = "%Y-%m-%d"
 
   for id_key, todo in todos["todos"].items():
-    rem_time = todo.get("rem_time", "n.A")
-    if len(rem_time) > 0:
-      rem_time_dt = datetime.datetime.strptime(rem_time, dateformat)
-      rest = rem_time_dt - now
-      if rest.days < 2:
+    if todo["status"] == "open":
+      rem_time = todo.get("rem_time", "")
+      if len(rem_time) > 0:
+        rem_time_dt = datetime.datetime.strptime(rem_time, dateformat)
+        rest = rem_time_dt - now
+        if rest.days < 2:
           lto_remind.append(id_key)
   return lto_remind
+
+
+def get_used_tags():
+  num_of_tags = {}
+
+  for _, todo in todos["todos"].items():
+    if todo["status"] == "open":
+      for tag in todo["tags"]:
+        if tag:
+          if tag in num_of_tags.keys():
+            num_of_tags[tag] += 1
+          else:
+            num_of_tags[tag] = 1
+
+  lused_tags = list(num_of_tags.keys())
+  lused_tags.sort()
+
+  return lused_tags
 
 
 @app.route("/")
 @app.route("/open")
 def index():
   lto_remind = get_ids_to_remind()
-  return render_template("index.html", todos=todos, status_to_show="open", comments=False, id_comments=None, ids_to_remind=lto_remind)
+  lused_tags = get_used_tags()
+  return render_template("index.html", todos=todos, status_to_show="open", comments=False, id_comments=None, ids_to_remind=lto_remind, used_tags=lused_tags, tag_filter=None, )
 
 
 @app.route("/closed")
 def closed():
-  return render_template("index.html", todos=todos, status_to_show="closed", comments=False, id_comments=None)
+  lused_tags = get_used_tags()
+  return render_template("index.html", todos=todos, status_to_show="closed", comments=False, id_comments=None, ids_to_remind=[], used_tags=lused_tags, tag_filter=None, )
 
 
 @app.route("/open_comments")
 def open_c():
   lto_remind = get_ids_to_remind()
-  return render_template("index.html", todos=todos, status_to_show="open", comments=True, id_comments=None, ids_to_remind=lto_remind)
+  lused_tags = get_used_tags()
+  return render_template("index.html", todos=todos, status_to_show="open", comments=True, id_comments=None, ids_to_remind=lto_remind, used_tags=lused_tags, tag_filter=None)
 
 
 @app.route("/closed_comments")
 def closed_c():
-  return render_template("index.html", todos=todos, status_to_show="closed", comments=True, id_comments=None)
+  lused_tags = get_used_tags()
+  return render_template("index.html", todos=todos, status_to_show="closed", comments=True, id_comments=None, ids_to_remind=[], used_tags=lused_tags, tag_filter=None)
 
 
 @app.route("/one_comments/<status>/<int:todo_id>")
 def one_comments(todo_id, status):
   lto_remind = get_ids_to_remind()
+  lused_tags = get_used_tags()
   todo_id = str(todo_id)
-  return render_template("index.html", todos=todos, status_to_show=status, comments=False, id_comments=todo_id, ids_to_remind=lto_remind)
+  return render_template("index.html", todos=todos, status_to_show=status, comments=False, id_comments=todo_id, ids_to_remind=lto_remind, used_tags=lused_tags, tag_filter=None, )
 
 
-@app.route("/todo/<int:todo_id>/edit", methods=['GET', 'POST'])
-@app.route("/edit_todo/<int:todo_id>", methods=['GET', 'POST'])
+@app.route("/edit_todo/<int:todo_id>", methods=["GET", "POST"])
 def edit_todo(todo_id):
-  print(f"{request.method=}")
   todo_id = str(todo_id)
   todo_dic = todos["todos"].get(todo_id)
   form = PostForm()
-  print(1)
-  # if form.validate_on_submit():
   if request.method == "POST":
     today = str(datetime.date.today())
 
     todos["todos"][todo_id]["title"] = form.title.data
+
     if form.comment_1.data:
       todos["todos"][todo_id]["comments"][0][0] = form.comment_1.data
     if form.comment_2.data:
@@ -118,10 +137,33 @@ def edit_todo(todo_id):
       todos["todos"][todo_id]["comments"][8][0] = form.comment_9.data
     if form.comment_10.data:
       todos["todos"][todo_id]["comments"][9][0] = form.comment_10.data
+    if form.comment_11.data:
+      todos["todos"][todo_id]["comments"][10][0] = form.comment_11.data
+    if form.comment_12.data:
+      todos["todos"][todo_id]["comments"][11][0] = form.comment_12.data
+    if form.comment_13.data:
+      todos["todos"][todo_id]["comments"][12][0] = form.comment_13.data
+    if form.comment_14.data:
+      todos["todos"][todo_id]["comments"][13][0] = form.comment_14.data
+    if form.comment_15.data:
+      todos["todos"][todo_id]["comments"][14][0] = form.comment_15.data
+    if form.comment_16.data:
+      todos["todos"][todo_id]["comments"][15][0] = form.comment_16.data
+    if form.comment_17.data:
+      todos["todos"][todo_id]["comments"][16][0] = form.comment_17.data
+    if form.comment_18.data:
+      todos["todos"][todo_id]["comments"][17][0] = form.comment_18.data
+    if form.comment_19.data:
+      todos["todos"][todo_id]["comments"][18][0] = form.comment_19.data
+    if form.comment_20.data:
+      todos["todos"][todo_id]["comments"][19][0] = form.comment_20.data
 
     # new_comment
     if form.new_comment.data:
       todos["todos"][todo_id]["comments"].append([form.new_comment.data, today])
+
+    # reminder
+    todos["todos"][todo_id]["rem_time"] = str(form.reminder.data)
 
     new_tags = form.tags.data
     lnew_tags_temp = new_tags.replace(" ", ",").split(",")
@@ -129,55 +171,65 @@ def edit_todo(todo_id):
     todos["todos"][todo_id]["tags"] = lnew_tags
 
     dump_todos_to_json()
-    return redirect('/open')
+    return redirect("/open")
 
   return render_template("edit.html", form=form, todo=todo_dic)
 
 
-@app.route("/todo/<int:todo_id>/close")
-def close_todo(todo_id):
+@app.route("/todo/<int:todo_id>/<status>")
+def change_status_todo(todo_id, status):
   todo_id = str(todo_id)
-  todos["todos"][todo_id]["status"] = "closed"
+  todos["todos"][todo_id]["status"] = status
   dump_todos_to_json()
-  return redirect('/open')
+  return redirect("/open")
 
 
-@app.route("/todo/<int:todo_id>/reopen")
-def reopen_todo(todo_id):
-  todo_id = str(todo_id)
-  todos["todos"][todo_id]["status"] = "open"
-  dump_todos_to_json()
-  return redirect('/open')
-
-
-@app.route("/new_todo", methods=['POST'])
+@app.route("/new_todo", methods=["POST"])
 def create_todo():
   today = str(datetime.date.today())
 
-  new_title = request.form['new_todo_title']
+  new_title = request.form["new_todo_title"]
 
-  new_tags = request.form['new_todo_tags']
+  new_tags = request.form["new_todo_tags"]
   lnew_tags_temp = new_tags.replace(" ", ",").split(",")
   lnew_tags = list(filter(None, lnew_tags_temp))
 
-  new_todo_reminder = request.form['new_todo_reminder']
+  new_todo_reminder = request.form["new_todo_reminder"]
 
   todos["ids"] += 1
   new_id = str(todos["ids"])
   todos["todos"][new_id] = {
-    "id": new_id,
-    "title": new_title,
-    "status": "open",
-    "comments": [],
-    "tags": lnew_tags,
-    "result": "",
-    "date_added": today,
-    "rem_time": new_todo_reminder,
+      "id": new_id,
+      "title": new_title,
+      "status": "open",
+      "comments": [],
+      "tags": lnew_tags,
+      "result": "",
+      "date_added": today,
+      "rem_time": new_todo_reminder,
   }
   dump_todos_to_json()
-  print(todos["todos"][new_id])
-  return redirect('/open')
+  return redirect("/open")
 
 
-if __name__ == "__main__":
-  app.run(debug=True)
+@app.route("/tag/<tag>")
+def filter_by_tag(tag, comments=False):
+  lto_remind = get_ids_to_remind()
+  lused_tags = get_used_tags()
+  return render_template("tag.html", todos=todos, comments=comments, id_comments=None, ids_to_remind=lto_remind, used_tags=lused_tags, tag_filter=tag, )
+
+
+@app.route("/<tag>/<int:todo_id>")
+def one_comments_tag(tag, todo_id):
+  lto_remind = get_ids_to_remind()
+  lused_tags = get_used_tags()
+  todo_id = str(todo_id)
+  return render_template("tag.html", todos=todos, comments=False, id_comments=todo_id, ids_to_remind=lto_remind, used_tags=lused_tags, tag_filter=tag, )
+
+
+@app.route("/tag/<tag>/<int:todo_id>/<status>")
+def change_status_todo_tag(tag, todo_id, status):
+  todo_id = str(todo_id)
+  todos["todos"][todo_id]["status"] = status
+  dump_todos_to_json()
+  return redirect("/tag/" + tag)
