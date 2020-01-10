@@ -101,9 +101,14 @@ def closed_c():
 
 @app.route("/one_comments/<status>/<int:todo_id>")
 def one_comments(todo_id, status):
+  print("one_comment")
   lto_remind = get_ids_to_remind()
   lused_tags = get_used_tags()
   todo_id = str(todo_id)
+  print(f"{lto_remind=}", sep="")
+  print(f"{lused_tags=}", sep="")
+  print(f"{todo_id=}")
+  print(f"{status=}")
   return render_template("index.html", todos=todos, status_to_show=status, comments=False, id_comments=todo_id, ids_to_remind=lto_remind, used_tags=lused_tags, tag_filter=None, )
 
 
@@ -163,7 +168,8 @@ def edit_todo(todo_id):
       todos["todos"][todo_id]["comments"].append([form.new_comment.data, today])
 
     # reminder
-    todos["todos"][todo_id]["rem_time"] = str(form.reminder.data)
+    if form.reminder.data:
+      todos["todos"][todo_id]["rem_time"] = str(form.reminder.data)
 
     new_tags = form.tags.data
     lnew_tags_temp = new_tags.replace(" ", ",").split(",")

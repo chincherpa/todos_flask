@@ -27,5 +27,5 @@ class PostForm(FlaskForm):
   comment_20 = StringField('comment_20')
   new_comment = StringField('new_comment')
   tags = StringField('tags')
-  reminder = DateField('reminder', format='%Y-%m-%d')
+  reminder = DateField('reminder')
   submit = SubmitField('ok')
