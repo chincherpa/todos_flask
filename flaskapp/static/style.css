@@ -4,17 +4,17 @@ body {
     font-family: Monospace;
     font-size:14px;
     margin-top: 25px;
-}
+  }
 
-body h1, h2{
+  body h1, h2{
     color: white;
-}
+  }
 
-a, a:visited {
+  a, a:visited {
     text-decoration: none;
-}
+  }
 
-a {
+  a {
     color: #00ff00;
     background-image: linear-gradient(
     transparent 0%,
@@ -24,9 +24,9 @@ a {
     transition: background-position 120ms ease-in-out, padding 120ms ease-in-out;
     background-size: 100% 200%;
     background-position: 0 0;
-}
+  }
 
-a:hover {
+  a:hover {
     color: #000;
     padding: 2px 0 4px 0;
     background-image: linear-gradient(
@@ -36,9 +36,9 @@ a:hover {
     rgba(0, 255, 0, 1) 100%);
     background-position: 0 100%;
     text-transform: uppercase;
-}
+  }
 
-.center_this {
+  .center_this {
     max-width: 780;
     margin: auto;
     border: 1px solid rgb(0, 255, 0);
@@ -46,83 +46,83 @@ a:hover {
     padding-right: 20px;
     padding-bottom: 10px;
     padding-left: 20px;
-}
+  }
 
-#no_underline a{
+  #no_underline a{
     color: #00ff00;
     padding: 0;
     background-image: none;
     background-position: 0 100%;
-}
+  }
 
-/* #btn {
+  /* #btn {
     border: 1px solid rgb(0, 255, 0);
-} */
+  } */
 
-#no_underline a:hover{
+  #no_underline a:hover{
     text-transform: none;
     text-decoration: underline;
-}
+  }
 
-#privat, #notprivat {
+  #privat, #notprivat {
     line-height: 12pt;
-}
+  }
 
-#upcoming {
+  #upcoming {
     padding: 10px 10px 10px 10px;
     margin-bottom: 40px;
     border: 1px solid rgb(0, 255, 0);
-}
+  }
 
-#upcoming td:nth-child(4) {
+  #upcoming td:nth-child(4) {
     color: white;
-}
+  }
 
-#upcoming td:nth-child(5) {
+  #upcoming td:nth-child(5) {
     color: white;
-}
+  }
 
-#upcoming td:nth-child(4) a {
+  #upcoming td:nth-child(4) a {
     color: white;
-}
+  }
 
-#privat {
+  #privat, #tab_used_tags {
     padding: 20px 0px 20px 0px;
-}
+  }
 
-#privat td:nth-child(4) {
+  #privat td:nth-child(4) {
     color: white;
-}
+  }
 
-#privat td:nth-child(5) {
+  #privat td:nth-child(5) {
     color: white;
-}
+  }
 
-#privat td:nth-child(4) a {
+  #privat td:nth-child(4) a {
     color: white;
-}
+  }
 
-#notprivat td:nth-child(4) {
+  #notprivat td:nth-child(4) {
     color: white;
-}
+  }
 
-#notprivat td:nth-child(5) {
+  #notprivat td:nth-child(5) {
     color: white;
-}
+  }
 
-#notprivat td:nth-child(4) a {
+  #notprivat td:nth-child(4) a {
     color: white;
-}
+  }
 
 
-#footer {
+  #footer {
     color: white;
     margin: 50px 0px;
-}
+  }
 
 
-/* The Modal (background) */
-.modal {
+  /* The Modal (background) */
+  .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -134,18 +134,18 @@ a:hover {
     overflow: auto; /* Enable scroll if needed */
     background-color: black; /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
+  }
 
-/* Modal Content */
-.modal-content {
+  /* Modal Content */
+  .modal-content {
     background-color: black;
     margin: auto;
     padding: 30px;
     border: 1px solid rgb(0, 255, 0);
     width: 550px;
-}
+  }
 
-.textbox {
+  .textbox {
     font-size:14px;
     border-color:#cccccc;
     background-color:#000000;
@@ -156,36 +156,36 @@ a:hover {
     font-family:monospace;
     font-style:italic;
     font-weight:normal;
-}
+  }
 
-.textbox:focus {
+  .textbox:focus {
     outline:none;
-}
+  }
 
-input[type=button] {
+  input[type=button] {
     background-color:#000;
     border:1px #0f0 solid;
     color:#0f0;
-}
+  }
 
-input[type=submit] {
+  input[type=submit] {
     background-color:#000;
     border:1px #0f0 solid;
     color:#0f0;
-}
+  }
 
 
-/* The Close Button */
-.close {
+  /* The Close Button */
+  .close {
     color: red;
     float: right;
     font-size: 28px;
     font-weight: bold;
-}
+  }
 
-.close:hover,
-.close:focus {
+  .close:hover,
+  .close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
-}
+  }

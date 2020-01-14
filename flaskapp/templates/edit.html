@@ -1,42 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>edit todo</h1>
+  <h1>edit todo</h1>
 
-    <form method="POST" action="/edit_todo/{{ todo.id }}">
-    <div>
-    <pre>title		<input type="text" class="textbox" name="title" size="75" value="{{ todo.title }}"></pre>
+  <form method="POST" action="/edit_todo/{{ todo.id }}">
+  <div>
+  <pre>title		<input type="text" class="textbox" name="title" size="75" value="{{ todo.title }}"></pre>
 
-    {% if todo.comments|length > 0 %}
-        {% for comment in todo.comments %}
-        <pre>comment {{loop.index}}	<input type="text" class="textbox" name="comment_{{loop.index}}" size="75" value="{{ comment[0] }}"></pre>
-        {% endfor %}
-    {% endif %}
+  {% if todo.comments|length > 0 %}
+    {% for comment in todo.comments %}
+      <pre>comment {{loop.index}}	<input type="text" class="textbox" name="comment_{{loop.index}}" size="75" value="{{ comment[0] }}"></pre>
+    {% endfor %}
+  {% endif %}
     <pre>new comment	<input type="text" class="textbox" name="new_comment" size="75"></pre>
+
     {% if todo.tags|length > 0 %}
-        <pre>tags		<input type="text" class="textbox" name="tags" size="75" value="{% for tag in todo.tags %}{{ tag }}, {% endfor %}"></pre>
-    {% endif %}
+    <pre>tags		<input type="text" class="textbox" name="tags" size="75" value="{% for tag in todo.tags %}{{ tag }}, {% endfor %}"></pre>
+  {% else %}
+    <pre>tags		<input type="text" class="textbox" name="tags" size="75" value=""></pre>
+  {% endif %}
 
-    <input type="submit" value="ok">
-    <input type="button" onclick="location.href='/open';" value="cancel"/>
-    <input type="button" onclick="location.href='{{ url_for('close_todo', todo_id=todo.id) }}';" value="close" style="border:1px #f00 solid; color:#f00;
+  {% if todo.rem_time|length > 0 %}
+    <pre>reminder	<input type="date" class="textbox" name="reminder" size="30" value="{{ todo.rem_time }}"></pre>
+  {% else %}
+    <pre>reminder	<input type="date" class="textbox" name="reminder" size="30"></pre>
+  {% endif %}
+
+
+  <input type="submit" value="ok">
+  <input type="button" onclick="location.href='/open';" value="cancel"/>
+  <input type="button" onclick="location.href='{{ url_for('change_status_todo', todo_id=todo.id, status='closed') }}';" value="close" style="border:1px #f00 solid; color:#f00;
 "/>
-    </div>
-    </form>
+  </div>
+  </form>
 </div>
-
-<!-- <div class=container>
-    <h1>Todos</h1>
-
-    <h2>Edit todo</h2>
-
-    <p>title {{ todo.title }}</p>
-    <p>status {{ todo.status }}</p>
-    <p>comments {{ todo.comments }}</p>
-    <p>tags {{ todo.tags }}</p>
-    <p>result {{ todo.result }}</p>
-    <p>date_added {{ todo.date_added }}</p>
-    <p>rem_time {{ todo.rem_time }}</p>
-
-</div> -->
 {% endblock %}
