@@ -10,7 +10,6 @@
 {% block content %}
 {% endblock %}
 
-
 <form method="post" action="/new_todo">
     <!-- modal window NEW TODO-->
     <div id="modal_new_todo" class="modal">
@@ -31,6 +30,26 @@
         </div>
     </div>
 </form>
+
+<!--<form method="post" action="/close_todo">
+<!--    <!-- modal window CLOSE TODO-->
+<!--    <div id="modal_close_todo" class="modal">
+<!--        <!-- window content -->
+<!--        <div class="modal-content">
+<!--            <!-- close button -->
+<!--            <span class="close">&times;</span>
+<!--            <p><br></p>
+<!--            <!-- title-->
+<!--            <pre>title	<input type="text" class="textbox" name="close_todo_title" size="50"></pre>
+<!--            <!-- result-->
+<!--            <pre>result	<input type="text" class="textbox" name="result" size="50"></pre>
+<!--            <!-- ok button -->
+<!--            <input type="submit" value="ok"> <input type="button" onclick="location.href='/open';" value="cancel"/>
+<!--            <!-- <input type="reset" value="cancel" id="cancel"> -->
+<!--        </div>
+<!--    </div>
+<!--</form>-->
+
 </div>
 <script>
 // heutiges Datum eintragen

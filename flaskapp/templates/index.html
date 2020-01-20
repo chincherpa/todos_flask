@@ -19,7 +19,7 @@
       {% endif %}
     <td>{{ todo.id }}</td>
     <td style="width:600px">
-      {{ todo.title }}  
+      {{ todo.title }}
     </td></tr>
   {% endif %}
       {% endfor %}
@@ -53,7 +53,7 @@
         {% elif todo.comments|length > 0 or todo.tags|length > 0 %}
            <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">{{ todo.title }}</a>
         {% else %}
-          {{ todo.title }}  
+          {{ todo.title }}
         {% endif %}
       </td>
       <td id="no_underline">
@@ -70,7 +70,7 @@
           <tr><td></td><td></td></td><td></td><td></td><td></td></tr>
         {% endif %}
       {% endif %} -->
-  
+
       {% if todo.id == id_comments or comments %}
         {% for comment in todo.comments %}
         <tr>
@@ -107,7 +107,7 @@
       {% elif todo.comments|length > 0 or todo.tags|length > 0 %}
          <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">{{ todo.title }}</a>
       {% else %}
-        {{ todo.title }}  
+        {{ todo.title }}
       {% endif %}
     </td>
     <td id="no_underline">
