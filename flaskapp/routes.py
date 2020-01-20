@@ -3,7 +3,7 @@ import json
 import os
 import sys
 
-from flask import redirect, render_template, request, send_from_directory
+from flask import Flask, redirect, render_template, request, send_from_directory, url_for
 from flaskapp import app
 from flaskapp.forms import PostForm
 
@@ -72,12 +72,24 @@ def get_used_tags():
   return lused_tags
 
 
-@app.route("/")
 @app.route("/open")
 def index():
   lto_remind = get_ids_to_remind()
   lused_tags = get_used_tags()
   return render_template("index.html", todos=todos, status_to_show="open", comments=False, id_comments=None, ids_to_remind=lto_remind, used_tags=lused_tags, tag_filter=None, )
+
+
+# Route for handling the login page logic
+@app.route("/")
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        if request.form['username'] != 'lulef' or request.form['password'] != 'yxasqw12':
+            error = 'Invalid Credentials. Please try again.'
+        else:
+            return redirect(url_for('index'))
+    return render_template('login.html', error=error)
 
 
 @app.route("/closed")

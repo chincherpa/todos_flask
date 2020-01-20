@@ -18,48 +18,13 @@
         <td></td>
       {% endif %}
     <td>{{ todo.id }}</td>
-    <td id="no_underline" style="width:600px">
-      {% if todo.id == id_comments %}
-        <a href='/{{ status_to_show}}'>{{ todo.title }}</a>
-      {% elif todo.comments|length > 0 or todo.tags|length > 0 %}
-         <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">{{ todo.title }}</a>
-      {% else %}
-        {{ todo.title }}  
-      {% endif %}
-    </td>
-    <td id="no_underline">
-      {% if todo.id == id_comments %}
-        <a href='/{{ status_to_show }}'>-</a>
-      {% elif todo.comments|length > 0 or todo.tags|length > 0 %}
-        <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">+</a>
-      {% endif %}
+    <td style="width:600px">
+      {{ todo.title }}  
     </td></tr>
-    <!-- {% if todo.id == id_comments %}
-      {% if todo.rem_time|length > 0 and not comments %}
-      <tr><td colspan="2">{{ todo.rem_time }}</td><td></td><td></td><td></td></tr>
-      {% else %}
-        <tr><td></td><td></td></td><td></td><td></td><td></td></tr>
-      {% endif %}
-    {% endif %} -->
-
-    {% if todo.id == id_comments or comments %}
-      {% for comment in todo.comments %}
-      <tr>
-        {% if loop.index == 1 %}
-          <td colspan="2" style="width: 1px; white-space: nowrap;">{% if todo.rem_time|length > 0 %}{{ todo.rem_time }}{% else %}{% endif %}</td>
-        {% else %}
-          <td></td><td></td>
-        {% endif %}
-        <td></td><td style="color: white">&nbsp;- {{ comment[0] }}</td><td style="width: 1px; white-space: nowrap;">{{ comment[1] }}</td></tr>
-      {% endfor %}
-      {% if todo.tags|length > 0 %}
-        <tr><td></td><td></td><td></td><td style="color: rgb(168, 168, 0)">&nbsp;{% for tag in todo.tags %}*{{ tag }} {% endfor %}</td><td></td></tr>
-      {% endif %}
-    {% endif %}
   {% endif %}
       {% endfor %}
   </table>
-  {% endif %}
+{% endif %}
 
 {% if status_to_show == "open" %}
   <h1 style="display:inline;">open todos</h1>
