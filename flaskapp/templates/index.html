@@ -36,14 +36,14 @@
 {% endif %}
 
 <table id="privat">
-  {% for _TODOID_, todo in todos.todos.items() %}
+  {% for _, todo in todos.todos.items() %}
     {% if todo.status == status_to_show and 'privat' in todo.tags %}
       <tr>
         {% if status_to_show == "open" %}
-          <td><a href="{{ url_for('change_status_todo', todo_id=todo.id, status='closed') }}">close</a></td>
+          <td><a href="{{ url_for('change_status_todo', todo_id=todo.id) }}">close</a></td>
           <td><a href="{{ url_for('edit_todo', todo_id=todo.id) }}">edit</a></td>
         {% else %}
-          <td><a href="{{ url_for('change_status_todo', todo_id=todo.id, status='open') }}">reopen</a></td>
+          <td><a href="{{ url_for('change_status_todo', todo_id=todo.id) }}">reopen</a></td>
           <td></td>
         {% endif %}
       <td>{{ todo.id }}</td>
@@ -90,14 +90,14 @@
   </table>
   .
 <table id="notprivat">
-{% for _TODOID_, todo in todos.todos.items() %}
+{% for _, todo in todos.todos.items() %}
   {% if todo.status == status_to_show and 'privat' not in todo.tags %}
     <tr>
       {% if status_to_show == "open" %}
-        <td><a href="{{ url_for('change_status_todo', todo_id=todo.id, status='closed') }}">close</a></td>
+        <td><a href="{{ url_for('change_status_todo', todo_id=todo.id) }}">close</a></td>
         <td><a href="{{ url_for('edit_todo', todo_id=todo.id) }}">edit</a></td>
       {% else %}
-        <td><a href="{{ url_for('change_status_todo', todo_id=todo.id, status='open') }}">reopen</a></td>
+        <td><a href="{{ url_for('change_status_todo', todo_id=todo.id) }}">reopen</a></td>
         <td></td>
       {% endif %}
     <td>{{ todo.id }}</td>
