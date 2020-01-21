@@ -85,7 +85,7 @@ def index():
 def login():
     error = None
     if request.method == 'POST':
-        if request.form['username'] != 'lulef' or request.form['password'] != 'yxasqw12':
+        if request.form['username'].lower() != 'lulef' or request.form['password'] != 'yxasqw12':
             error = 'Invalid Credentials. Please try again.'
         else:
             return redirect(url_for('index'))
