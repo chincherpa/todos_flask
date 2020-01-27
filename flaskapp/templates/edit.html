@@ -28,7 +28,7 @@
 
   <input type="submit" value="ok">
   <input type="button" onclick="location.href='/open';" value="cancel"/>
-  <input type="button" onclick="location.href='{{ url_for('change_status_todo', todo_id=todo.id, status='closed') }}';" value="close" style="border:1px #f00 solid; color:#f00;
+  <input type="button" onclick="location.href='{{ url_for('close_todo', todo_id=todo.id) }}';" value="close" style="border:1px #f00 solid; color:#f00;
 "/>
   </div>
   </form>

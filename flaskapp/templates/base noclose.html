@@ -1,0 +1,86 @@
+<html>
+<head>
+<title>Todos</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+<div class="center_this">
+
+{% block content %}
+{% endblock %}
+
+<form method="post" action="/new_todo">
+    <!-- modal window NEW TODO-->
+    <div id="modal_new_todo" class="modal">
+        <!-- window content -->
+        <div class="modal-content">
+            <!-- close button -->
+            <span class="close">&times;</span>
+            <p><br></p>
+            <!-- title-->
+            <pre>title		<input type="text" class="textbox" name="new_todo_title" size="50"></pre>
+            <!-- tags -->
+            <pre>tags		<input type="text" class="textbox" name="new_todo_tags" size="50"></pre>
+            <!-- reminder -->
+            <pre>reminder	<input type="date" class="textbox" name="new_todo_reminder" size="30"></pre>  <!-- id="todaysDate" heutiges Datum eintragen-->
+            <!-- ok button -->
+            <input type="submit" value="ok"> <input type="button" onclick="location.href='/open';" value="cancel"/>
+            <!-- <input type="reset" value="cancel" id="cancel"> -->
+        </div>
+    </div>
+</form>
+
+</div>
+<script>
+// heutiges Datum eintragen
+// function setInputDate(_id){
+//     var _dat = document.querySelector(_id);
+//     var hoy = new Date(),
+//         d = hoy.getDate(),
+//         m = hoy.getMonth()+1,
+//         y = hoy.getFullYear();
+
+//     if(d < 10){
+//         d = "0"+d;
+//     };
+//     if(m < 10){
+//         m = "0"+m;
+//     };
+
+//     _dat.value = y+"-"+m+"-"+d;
+// };
+// setInputDate("#todaysDate");
+
+// MODAL NEW TODO
+var modal_new = document.getElementById("modal_new_todo");
+// Get the button that opens the modal new_todo
+var btn_new = document.getElementById("new_todo");
+// var btn_new_cancel = document.getElementById("cancel");
+// Get the <span> element that closes the modal
+var span_new = document.getElementsByClassName("close")[0];
+// When the user clicks the button, open the modal
+btn_new.onclick = function() {
+    modal_new.style.display = "block";
+}
+// btn_new_cancel.onclick = function() {
+//     modal_new.style.display = "none";
+// }
+// When the user clicks on <span> (x), close the modal
+span_new.onclick = function() {
+    modal_new.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+if (event.target == modal_new) {
+    modal_new.style.display = "none";
+}
+}
+
+</script>
+
+</body>
+
+<!-- <div id=footer><p>Lul3f</p></div> -->
+
+</html>
