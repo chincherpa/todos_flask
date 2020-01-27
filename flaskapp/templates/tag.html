@@ -49,16 +49,16 @@
 {% endif %}
 {% endfor %}
 </table>
-.
+&nbsp;
 <table id="notprivat">
 {% for id, todo in todos.todos.items() %}
 {% if tag_filter in todo.tags and 'privat' not in todo.tags %}
 <tr>
 {% if todo.status == "open" %}
-<td><a href="{{ url_for('change_status_todo_tag', tag=tag_filter, todo_id=todo.id, status='closed') }}">close</a></td>
-<td><a href="{{ url_for('edit_todo', todo_id=todo.id) }}">edit</a></td>
+<td><a href="{{ url_for('change_status_todo_tag', tag=tag_filter, todo_id=todo.id, status='closed') }}">&nbsp;close&nbsp;</a></td>
+<td><a href="{{ url_for('edit_todo', todo_id=todo.id) }}">&nbsp;edit&nbsp;</a></td>
 {% else %}
-<td><a href="{{ url_for('change_status_todo_tag', tag=tag_filter, todo_id=todo.id, status='open') }}">reopen</a></td>
+<td><a href="{{ url_for('change_status_todo_tag', tag=tag_filter, todo_id=todo.id, status='open') }}">&nbsp;reopen&nbsp;</a></td>
 <td></td>
 {% endif %}
 <td>{{ todo.id }}</td>
@@ -69,11 +69,11 @@
   <a href="{{ url_for('one_comments_tag', tag=tag_filter ,todo_id=todo.id) }}">{{ todo.title }}</a>
 {% endif %}
 </td>
-<td id="no_underline">
+<td>
 {% if todo.id == id_comments %}
-  <a href="{{ url_for('filter_by_tag', tag=tag_filter) }}">-</a>
+  <a href="{{ url_for('filter_by_tag', tag=tag_filter) }}">&nbsp;-&nbsp;</a>
 {% elif todo.comments|length > 0 or todo.tags|length > 0 %}
-  <a href="{{ url_for('one_comments_tag', tag=tag_filter,todo_id=todo.id) }}">+</a>
+  <a href="{{ url_for('one_comments_tag', tag=tag_filter,todo_id=todo.id) }}">&nbsp;+&nbsp;</a>
 {% endif %}
 </td>
 </tr>
@@ -94,13 +94,18 @@
 {% endif %}
 {% endfor %}
 </table>
-.
+&nbsp;
 <table id="tab_used_tags">
   <tr>
-    {% for used_tag in used_tags %}
-    <td><a href="{{ url_for('filter_by_tag', tag=used_tag) }}">{{ used_tag }}</a></td>
+    {% for used_tag in used_tags1 %}
+    <td><a href="{{ url_for('filter_by_tag', tag=used_tag) }}">&nbsp;{{ used_tag }}&nbsp;</a></td>
+    {% endfor %}
+  </tr>
+  <tr>
+    {% for used_tag in used_tags2 %}
+    <td><a href="{{ url_for('filter_by_tag', tag=used_tag) }}">&nbsp;{{ used_tag }}&nbsp;</a></td>
     {% endfor %}
   </tr>
 </table>
-    
+
 {% endblock %}
