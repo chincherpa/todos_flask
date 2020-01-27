@@ -4,18 +4,18 @@
 <p><a id="new_todo">new todo</a></p>
 
 <h1 style="display:inline;">todos with tag: {{ tag_filter }}</h1>
-<p><a href='/open'>show open</a>|{% if comments %}<a href="{{ url_for('filter_by_tag', tag=tag_filter) }}">close comments</a>
-{% else %}<a href="{{ url_for('filter_by_tag', tag=tag_filter, comments=True) }}">show comments</a>{% endif %}</p>
+<p><a href='/open'>&nbsp;show open&nbsp;</a>|{% if comments %}<a href="{{ url_for('filter_by_tag', tag=tag_filter) }}">&nbsp;close comments&nbsp;</a>
+{% else %}<a href="{{ url_for('filter_by_tag', tag=tag_filter, comments=True) }}">&nbsp;show comments&nbsp;</a>{% endif %}</p>
 
 <table id="privat">
 {% for id, todo in todos.todos.items() %}
 {% if tag_filter in todo.tags and 'privat' in todo.tags %}
 <tr>
 {% if todo.status == "open" %}
-  <td><a href="{{ url_for('change_status_todo_tag', tag=tag_filter, todo_id=todo.id, status='closed') }}">close</a></td>
+  <td><a href="{{ url_for('change_status_todo_tag', tag=tag_filter, todo_id=todo.id, status='closed') }}">&nbsp;close&nbsp;</a></td>
   <td><a href="{{ url_for('edit_todo', todo_id=todo.id) }}">edit</a></td>
 {% else %}
-  <td><a href="{{ url_for('change_status_todo_tag', tag=tag_filter, todo_id=todo.id, status='open') }}">reopen</a></td>
+  <td><a href="{{ url_for('change_status_todo_tag', tag=tag_filter, todo_id=todo.id, status='open') }}">&nbsp;open&nbsp;</a></td>
   <td></td>
 {% endif %}
 <td>{{ todo.id }}</td>
@@ -55,10 +55,10 @@
 {% if tag_filter in todo.tags and 'privat' not in todo.tags %}
 <tr>
 {% if todo.status == "open" %}
-<td><a href="{{ url_for('change_status_todo_tag', tag=tag_filter, todo_id=todo.id, status='closed') }}">&nbsp;close&nbsp;</a></td>
+<td><a href="{{ url_for('close_todo', todo_id=todo.id) }}">&nbsp;close&nbsp;</a></td>
 <td><a href="{{ url_for('edit_todo', todo_id=todo.id) }}">&nbsp;edit&nbsp;</a></td>
 {% else %}
-<td><a href="{{ url_for('change_status_todo_tag', tag=tag_filter, todo_id=todo.id, status='open') }}">&nbsp;reopen&nbsp;</a></td>
+<td><a href="{{ url_for('reopen_todo', todo_id=todo.id) }}">&nbsp;open&nbsp;</a></td>
 <td></td>
 {% endif %}
 <td>{{ todo.id }}</td>

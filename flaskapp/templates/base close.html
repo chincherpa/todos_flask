@@ -31,6 +31,25 @@
     </div>
 </form>
 
+<form method="post" action="/close_todo">
+    <!-- modal window CLOSE TODO-->
+    <div id="modal_close_todo" class="modal">
+        <!-- window content -->
+        <div class="modal-content">
+            <!-- close button -->
+            <span class="close">&times;</span>
+            <p><br></p>
+            <!-- title-->
+<!--            <pre>title	<input type="text" class="textbox" name="close_todo_title" size="50"></pre>-->
+            <!-- result-->
+            <pre>result	<input type="text" class="textbox" name="result" size="50"></pre>
+            <!-- ok button -->
+            <input type="submit" value="ok"> <input type="button" onclick="location.href='/open';" value="cancel"/>
+            <!-- <input type="reset" value="cancel" id="cancel"> -->
+        </div>
+    </div>
+</form>-->
+
 </div>
 <script>
 // heutiges Datum eintragen
@@ -74,6 +93,32 @@ span_new.onclick = function() {
 window.onclick = function(event) {
 if (event.target == modal_new) {
     modal_new.style.display = "none";
+}
+}
+
+
+// MODAL CLOSE TODO
+var modal_close = document.getElementById("modal_close_todo");
+// Get the button that opens the modal close_todo
+var btn_close = document.getElementById("close_todo");
+// var btn_close_cancel = document.getElementById("cancel");
+// Get the <span> element that closes the modal
+var span_close = document.getElementsByClassName("close")[0];
+// When the user clicks the button, open the modal
+btn_close.onclick = function() {
+    modal_close.style.display = "block";
+}
+// btn_close_cancel.onclick = function() {
+//     modal_close.style.display = "none";
+// }
+// When the user clicks on <span> (x), close the modal
+span_close.onclick = function() {
+    modal_close.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+if (event.target == modal_close) {
+    modal_close.style.display = "none";
 }
 }
 

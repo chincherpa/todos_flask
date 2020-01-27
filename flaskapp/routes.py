@@ -3,7 +3,7 @@ import json
 import os
 import sys
 
-from flask import redirect, render_template, request, send_from_directory
+from flask import redirect, render_template, request, send_from_directory, url_for
 from flaskapp import app
 from flaskapp.forms import PostForm
 
@@ -71,8 +71,8 @@ def get_used_tags():
   lused_tags1.sort(key=str.casefold)
 
   if len(lused_tags1) >= 15:
-    lused_tags2 = lused_tags1[len(lused_tags1)//2:]
-    lused_tags1 = lused_tags1[:len(lused_tags1)//2]
+    lused_tags2 = lused_tags1[len(lused_tags1) // 2:]
+    lused_tags1 = lused_tags1[:len(lused_tags1) // 2]
 
   return lused_tags1, lused_tags2
 
@@ -195,13 +195,18 @@ def edit_todo(todo_id):
   return render_template("edit.html", form=form, todo=todo_dic)
 
 
-@app.route("/todo/<int:todo_id>")
-def change_status_todo(todo_id):
+@app.route("/todo/close/<int:todo_id>")
+def close_todo(todo_id):
   todo_id = str(todo_id)
-  if todos["todos"][todo_id]["status"] == "open":
-    todos["todos"][todo_id]["status"] = "closed"
-  else:
-    todos["todos"][todo_id]["status"] = "open"
+  todos["todos"][todo_id]["status"] = "closed"
+  dump_todos_to_json()
+  return redirect("/open")
+
+
+@app.route("/todo/reopen/<int:todo_id>")
+def reopen_todo(todo_id):
+  todo_id = str(todo_id)
+  todos["todos"][todo_id]["status"] = "open"
   dump_todos_to_json()
   return redirect("/open")
 
@@ -249,9 +254,9 @@ def one_comments_tag(tag, todo_id):
   return render_template("tag.html", todos=todos, comments=False, id_comments=todo_id, ids_to_remind=lto_remind, used_tags1=lused_tags1, used_tags2=lused_tags2, tag_filter=tag, )
 
 
-@app.route("/tag/<tag>/<int:todo_id>/<status>")
-def change_status_todo_tag(tag, todo_id, status):
-  todo_id = str(todo_id)
-  todos["todos"][todo_id]["status"] = status
-  dump_todos_to_json()
-  return redirect("/tag/" + tag)
+# @app.route("/tag/<tag>/<int:todo_id>/<status>")
+# def change_status_todo_tag(tag, todo_id, status):
+#   todo_id = str(todo_id)
+#   todos["todos"][todo_id]["status"] = status
+#   dump_todos_to_json()
+#   return redirect("/tag/" + tag)
