@@ -3,7 +3,7 @@ import json
 import os
 import sys
 
-from flask import Flask, redirect, render_template, request, send_from_directory, url_for
+from flask import redirect, render_template, request, send_from_directory
 from flaskapp import app
 from flaskapp.forms import PostForm
 
@@ -77,6 +77,7 @@ def get_used_tags():
   return lused_tags1, lused_tags2
 
 
+@app.route("/")
 @app.route("/open")
 def index():
   lto_remind = get_ids_to_remind()
@@ -118,14 +119,9 @@ def closed_c():
 
 @app.route("/one_comments/<status>/<int:todo_id>")
 def one_comments(todo_id, status):
-  print("one_comment")
   lto_remind = get_ids_to_remind()
   lused_tags1, lused_tags2 = get_used_tags()
   todo_id = str(todo_id)
-  print(f"{lto_remind=}", sep="")
-  print(f"{lused_tags=}", sep="")
-  print(f"{todo_id=}")
-  print(f"{status=}")
   return render_template("index.html", todos=todos, status_to_show=status, comments=False, id_comments=todo_id, ids_to_remind=lto_remind, used_tags1=lused_tags1, used_tags2=lused_tags2, tag_filter=None, )
 
 
@@ -199,10 +195,13 @@ def edit_todo(todo_id):
   return render_template("edit.html", form=form, todo=todo_dic)
 
 
-@app.route("/todo/<int:todo_id>/<status>")
-def change_status_todo(todo_id, status):
+@app.route("/todo/<int:todo_id>")
+def change_status_todo(todo_id):
   todo_id = str(todo_id)
-  todos["todos"][todo_id]["status"] = status
+  if todos["todos"][todo_id]["status"] == "open":
+    todos["todos"][todo_id]["status"] = "closed"
+  else:
+    todos["todos"][todo_id]["status"] = "open"
   dump_todos_to_json()
   return redirect("/open")
 
