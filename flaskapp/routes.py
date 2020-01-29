@@ -117,7 +117,7 @@ def closed_c():
   return render_template("index.html", todos=todos, status_to_show="closed", comments=True, id_comments=None, ids_to_remind=[], used_tags1=lused_tags1, used_tags2=lused_tags2, tag_filter=None)
 
 
-@app.route("/one_comments/<status>/<int:todo_id>")
+@app.route("/<status>/one_comments/<int:todo_id>")
 def one_comments(todo_id, status):
   lto_remind = get_ids_to_remind()
   lused_tags1, lused_tags2 = get_used_tags()
@@ -125,7 +125,7 @@ def one_comments(todo_id, status):
   return render_template("index.html", todos=todos, status_to_show=status, comments=False, id_comments=todo_id, ids_to_remind=lto_remind, used_tags1=lused_tags1, used_tags2=lused_tags2, tag_filter=None, )
 
 
-@app.route("/edit_todo/<int:todo_id>", methods=["GET", "POST"])
+@app.route("/todo/edit/<int:todo_id>", methods=["GET", "POST"])
 def edit_todo(todo_id):
   todo_id = str(todo_id)
   todo_dic = todos["todos"].get(todo_id)
@@ -195,12 +195,24 @@ def edit_todo(todo_id):
   return render_template("edit.html", form=form, todo=todo_dic)
 
 
-@app.route("/todo/close/<int:todo_id>")
+@app.route("/todo/close/<int:todo_id>", methods=["GET", "POST"])
 def close_todo(todo_id):
   todo_id = str(todo_id)
-  todos["todos"][todo_id]["status"] = "closed"
-  dump_todos_to_json()
-  return redirect("/open")
+  todo_dic = todos["todos"].get(todo_id)
+  form = PostForm()
+  if request.method == "POST":
+    today = str(datetime.date.today())
+
+    # result
+    if form.result.data:
+      todos["todos"][todo_id]["result"] = [form.result.data, today]
+
+    todos["todos"][todo_id]["status"] = "closed"
+
+    dump_todos_to_json()
+    return redirect("/open")
+
+  return render_template("close.html", form=form, todo=todo_dic)
 
 
 @app.route("/todo/reopen/<int:todo_id>")
