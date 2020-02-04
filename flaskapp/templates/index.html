@@ -18,7 +18,13 @@
         <td></td>
       {% endif %}
     <td>{{ todo.id }}</td>
-    <td style="width:600px">
+
+    {% if 'high' in todo.tags %}
+      <td id="no_underline_high" style="width:600px">HIGH 
+    {% else %}
+      <td style="width:600px">LOW 
+    {% endif %}
+
       {{ todo.title }}
     </td></tr>
   {% endif %}
@@ -47,7 +53,13 @@
           <td></td>
         {% endif %}
       <td>{{ todo.id }}</td>
-      <td id="no_underline" style="width:600px">
+
+        {% if 'high' in todo.tags %}
+          <td id="no_underline_high" style="width:600px">
+        {% else %}
+          <td id="no_underline" style="width:600px">
+        {% endif %}
+
         {% if todo.id == id_comments %}
           <a href='/{{ status_to_show}}'>{{ todo.title }}</a>
         {% elif todo.comments|length > 0 or todo.tags|length > 0 %}
@@ -86,29 +98,35 @@
   {% for _TODOID_, todo in todos.todos.items() %}
     {% if todo.status == status_to_show and 'privat' not in todo.tags %}
       <tr>
-        {% if status_to_show == "open" %}
-          <td><a href="{{ url_for('close_todo', todo_id=todo.id) }}">&nbsp;close&nbsp;</a></td>
-          <td><a href="{{ url_for('edit_todo', todo_id=todo.id) }}">&nbsp;edit&nbsp;</a></td>
-        {% else %}
-          <td><a href="{{ url_for('reopen_todo', todo_id=todo.id) }}">&nbsp;open&nbsp;</a></td>
-          <td></td>
-        {% endif %}
+      {% if status_to_show == "open" %}
+        <td><a href="{{ url_for('close_todo', todo_id=todo.id) }}">&nbsp;close&nbsp;</a></td>
+        <td><a href="{{ url_for('edit_todo', todo_id=todo.id) }}">&nbsp;edit&nbsp;</a></td>
+      {% else %}
+        <td><a href="{{ url_for('reopen_todo', todo_id=todo.id) }}">&nbsp;open&nbsp;</a></td>
+        <td></td>
+      {% endif %}
       <td>{{ todo.id }}</td>
-      <td id="no_underline" style="width:600px">
-        {% if todo.id == id_comments %}
-          <a href='/{{ status_to_show}}'>{{ todo.title }}</a>
-        {% elif todo.comments|length > 0 or todo.tags|length > 0 %}
-           <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">{{ todo.title }}</a>
-        {% else %}
-          {{ todo.title }}
-        {% endif %}
+
+      {% if 'high' in todo.tags %}
+        <td id="no_underline_high" style="width:600px">
+      {% else %}
+        <td id="no_underline" style="width:600px">
+      {% endif %}
+
+      {% if todo.id == id_comments %}
+        <a href='/{{ status_to_show}}'>{{ todo.title }}</a>
+      {% elif todo.comments|length > 0 or todo.tags|length > 0 %}
+        <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">{{ todo.title }}</a>
+      {% else %}
+        {{ todo.title }}
+      {% endif %}
       </td>
       <td>
-        {% if todo.id == id_comments %}
-          <a href='/{{ status_to_show }}'>-</a>
-        {% elif todo.comments|length > 0 or todo.tags|length > 0 %}
-          <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">&nbsp;+&nbsp;</a>
-        {% endif %}
+      {% if todo.id == id_comments %}
+        <a href='/{{ status_to_show }}'>-</a>
+      {% elif todo.comments|length > 0 or todo.tags|length > 0 %}
+        <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">&nbsp;+&nbsp;</a>
+      {% endif %}
       </td></tr>
 
       {% if todo.id == id_comments or comments %}

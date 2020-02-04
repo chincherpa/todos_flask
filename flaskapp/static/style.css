@@ -1,14 +1,14 @@
 body {
   background-color:black;
-  color: #00ff00;
+  color: white;
   font-family: Monospace;
   font-size:14px;
   margin-top: 25px;
 }
 
-body h1, h2{
+/* body h1, h2{
   color: white;
-}
+} */
 
 a, a:visited {
   text-decoration: none;
@@ -48,18 +48,37 @@ a:hover {
   padding-left: 20px;
 }
 
-#no_underline a{
-  color: #00ff00;
+#no_underline {
+  color: #fff;
   padding: 0;
   background-image: none;
   background-position: 0 100%;
 }
 
-/* #btn {
-  border: 1px solid rgb(0, 255, 0);
-} */
+#no_underline a{
+  color: #fff;
+  padding: 0;
+  background-image: none;
+  background-position: 0 100%;
+}
 
 #no_underline a:hover{
+  text-transform: none;
+  text-decoration: underline;
+}
+
+#no_underline_high {
+  color: #ff0000;
+}
+
+#no_underline_high a{
+  color: #ff0000;
+  padding: 0;
+  background-image: none;
+  background-position: 0 100%;
+}
+
+#no_underline_high a:hover{
   text-transform: none;
   text-decoration: underline;
 }
@@ -74,11 +93,11 @@ a:hover {
   border: 1px solid rgb(0, 255, 0);
 }
 
-#upcoming td:nth-child(4) {
-  color: white;
+#upcoming td:nth-child(3) {
+  color: #0f0;
 }
 
-#upcoming td:nth-child(5) {
+/* #upcoming td:nth-child(5) {
   color: white;
 }
 
@@ -88,31 +107,31 @@ a:hover {
 
 #privat, #tab_used_tags {
   padding: 20px 0px 20px 0px;
+} */
+
+#privat td:nth-child(3) {
+  color: #0f0;
 }
 
-#privat td:nth-child(4) {
-  color: white;
-}
-
-#privat td:nth-child(5) {
+/* #privat td:nth-child(5) {
   color: white;
 }
 
 #privat td:nth-child(4) a {
   color: white;
+} */
+
+#notprivat td:nth-child(3) {
+  color: #0f0;
 }
 
-#notprivat td:nth-child(4) {
-  color: white;
-}
-
-#notprivat td:nth-child(5) {
+/* #notprivat td:nth-child(5) {
   color: white;
 }
 
 #notprivat td:nth-child(4) a {
   color: white;
-}
+} */
 
 
 #footer {
