@@ -19,7 +19,7 @@
       {% endif %}
     <td>{{ todo.id }}</td>
 
-    {% if 'high' in todo.tags %}
+    {% if 'high' in todo.tags or 'hot' in todo.tags %}
       <td id="no_underline_high" style="width:600px">HIGH 
     {% else %}
       <td style="width:600px">LOW 
@@ -54,7 +54,7 @@
         {% endif %}
       <td>{{ todo.id }}</td>
 
-        {% if 'high' in todo.tags %}
+        {% if 'high' in todo.tags or 'hot' in todo.tags %}
           <td id="no_underline_high" style="width:600px">
         {% else %}
           <td id="no_underline" style="width:600px">
@@ -107,7 +107,7 @@
       {% endif %}
       <td>{{ todo.id }}</td>
 
-      {% if 'high' in todo.tags %}
+      {% if 'high' in todo.tags or 'hot' in todo.tags %}
         <td id="no_underline_high" style="width:600px">
       {% else %}
         <td id="no_underline" style="width:600px">
