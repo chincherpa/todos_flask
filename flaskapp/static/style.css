@@ -121,6 +121,10 @@ a:hover {
   color: white;
 } */
 
+/* #notprivat {
+  border-top: 1px solid #0f0;
+} */
+
 #notprivat td:nth-child(3) {
   color: #0f0;
 }

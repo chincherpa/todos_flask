@@ -20,11 +20,10 @@
     <td>{{ todo.id }}</td>
 
     {% if 'high' in todo.tags or 'hot' in todo.tags %}
-      <td id="no_underline_high" style="width:600px">HIGH 
+      <td id="no_underline_high" style="width:600px">
     {% else %}
-      <td style="width:600px">LOW 
+      <td style="width:600px">
     {% endif %}
-
       {{ todo.title }}
     </td></tr>
   {% endif %}
@@ -93,7 +92,7 @@
     {% endif %}
   {% endfor %}
 </table>
-&nbsp;
+<hr width="90%" color="#0f0" size="1">
 <table id="notprivat">
   {% for _TODOID_, todo in todos.todos.items() %}
     {% if todo.status == status_to_show and 'privat' not in todo.tags %}
@@ -116,7 +115,7 @@
       {% if todo.id == id_comments %}
         <a href='/{{ status_to_show}}'>{{ todo.title }}</a>
       {% elif todo.comments|length > 0 or todo.tags|length > 0 %}
-        <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">{{ todo.title }}</a>
+        <a href="{{ url_for('one_comments', status=status_to_show, todo_id=todo.id) }}">{{ todo.title }}</a>
       {% else %}
         {{ todo.title }}
       {% endif %}
@@ -125,7 +124,7 @@
       {% if todo.id == id_comments %}
         <a href='/{{ status_to_show }}'>-</a>
       {% elif todo.comments|length > 0 or todo.tags|length > 0 %}
-        <a href="{{ url_for('one_comments', todo_id=todo.id, status=status_to_show) }}">&nbsp;+&nbsp;</a>
+        <a href="{{ url_for('one_comments', status=status_to_show, todo_id=todo.id) }}">&nbsp;+&nbsp;</a>
       {% endif %}
       </td></tr>
 
@@ -150,12 +149,17 @@
 <table id="tab_used_tags">
   <tr>
     {% for used_tag in used_tags1 %}
-    <td><a href="{{ url_for('filter_by_tag', tag=used_tag) }}">&nbsp;{{ used_tag }}&nbsp;</a></td>
+    <td><a href="{{ url_for('filter_by_tag', status=status_to_show, tag=used_tag) }}">&nbsp;{{ used_tag }}&nbsp;</a></td>
     {% endfor %}
   </tr>
   <tr>
     {% for used_tag in used_tags2 %}
-    <td><a href="{{ url_for('filter_by_tag', tag=used_tag) }}">&nbsp;{{ used_tag }}&nbsp;</a></td>
+    <td><a href="{{ url_for('filter_by_tag', status=status_to_show, tag=used_tag) }}">&nbsp;{{ used_tag }}&nbsp;</a></td>
+    {% endfor %}
+  </tr>
+  <tr>
+    {% for used_tag in used_tags3 %}
+    <td><a href="{{ url_for('filter_by_tag', status=status_to_show, tag=used_tag) }}">&nbsp;{{ used_tag }}&nbsp;</a></td>
     {% endfor %}
   </tr>
 </table>

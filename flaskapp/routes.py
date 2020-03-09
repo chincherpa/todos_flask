@@ -54,11 +54,11 @@ def get_ids_to_remind():
   return lto_remind
 
 
-def get_used_tags():
+def get_used_tags(status):
   num_of_tags = {}
 
   for _, todo in todos["todos"].items():
-    if todo["status"] == "open":
+    if todo["status"] == status:
       for tag in todo["tags"]:
         if tag:
           if tag in num_of_tags.keys():
@@ -66,23 +66,33 @@ def get_used_tags():
           else:
             num_of_tags[tag] = 1
 
-  lused_tags1 = list(num_of_tags.keys())
+  lused_tags = list(num_of_tags.keys())
+  lused_tags.sort(key=str.casefold)
+  lused_tags1 = []
   lused_tags2 = []
-  lused_tags1.sort(key=str.casefold)
+  lused_tags3 = []
 
-  if len(lused_tags1) >= 15:
-    lused_tags2 = lused_tags1[len(lused_tags1) // 2:]
-    lused_tags1 = lused_tags1[:len(lused_tags1) // 2]
+  print(f"{len(lused_tags1)=}")
+  if len(lused_tags) >= 12:
+    print("get_used_tags 1")
+    lused_tags1 = lused_tags[:len(lused_tags) // 2]
+    lused_tags2 = lused_tags[len(lused_tags) // 2:]
 
-  return lused_tags1, lused_tags2
+  if len(lused_tags) >= 18:
+    print("get_used_tags 2")
+    lused_tags1 = lused_tags[:len(lused_tags) // 3]
+    lused_tags2 = lused_tags[len(lused_tags) // 3:len(lused_tags) - (len(lused_tags) // 3)]
+    lused_tags3 = lused_tags[len(lused_tags) - (len(lused_tags) // 3):]
+
+  return lused_tags1, lused_tags2, lused_tags3
 
 
 @app.route("/")
 @app.route("/open")
 def index():
   lto_remind = get_ids_to_remind()
-  lused_tags1, lused_tags2 = get_used_tags()
-  return render_template("index.html", todos=todos, status_to_show="open", comments=False, id_comments=None, ids_to_remind=lto_remind, used_tags1=lused_tags1, used_tags2=lused_tags2, tag_filter=None, )
+  lused_tags1, lused_tags2, lused_tags3 = get_used_tags("open")
+  return render_template("index.html", todos=todos, status_to_show="open", comments=False, id_comments=None, ids_to_remind=lto_remind, used_tags1=lused_tags1, used_tags2=lused_tags2, used_tags3=lused_tags3, tag_filter=None, )
 
 
 # Route for handling the login page logic
@@ -100,29 +110,29 @@ def login():
 
 @app.route("/closed")
 def closed():
-  lused_tags1, lused_tags2 = get_used_tags()
-  return render_template("index.html", todos=todos, status_to_show="closed", comments=False, id_comments=None, ids_to_remind=[], used_tags1=lused_tags1, used_tags2=lused_tags2, tag_filter=None, )
+  lused_tags1, lused_tags2, lused_tags3 = get_used_tags("closed")
+  return render_template("index.html", todos=todos, status_to_show="closed", comments=False, id_comments=None, ids_to_remind=[], used_tags1=lused_tags1, used_tags2=lused_tags2, used_tags3=lused_tags3, tag_filter=None, )
 
 
 @app.route("/open_comments")
 def open_c():
   lto_remind = get_ids_to_remind()
-  lused_tags1, lused_tags2 = get_used_tags()
-  return render_template("index.html", todos=todos, status_to_show="open", comments=True, id_comments=None, ids_to_remind=lto_remind, used_tags1=lused_tags1, used_tags2=lused_tags2, tag_filter=None)
+  lused_tags1, lused_tags2, lused_tags3 = get_used_tags()
+  return render_template("index.html", todos=todos, status_to_show="open", comments=True, id_comments=None, ids_to_remind=lto_remind, used_tags1=lused_tags1, used_tags2=lused_tags2, used_tags3=lused_tags3, tag_filter=None)
 
 
 @app.route("/closed_comments")
 def closed_c():
-  lused_tags1, lused_tags2 = get_used_tags()
-  return render_template("index.html", todos=todos, status_to_show="closed", comments=True, id_comments=None, ids_to_remind=[], used_tags1=lused_tags1, used_tags2=lused_tags2, tag_filter=None)
+  lused_tags1, lused_tags2, lused_tags3 = get_used_tags("closed")
+  return render_template("index.html", todos=todos, status_to_show="closed", comments=True, id_comments=None, ids_to_remind=[], used_tags1=lused_tags1, used_tags2=lused_tags2, used_tags3=lused_tags3, tag_filter=None)
 
 
 @app.route("/<status>/one_comments/<int:todo_id>")
-def one_comments(todo_id, status):
+def one_comments(status, todo_id):
   lto_remind = get_ids_to_remind()
-  lused_tags1, lused_tags2 = get_used_tags()
+  lused_tags1, lused_tags2, lused_tags3 = get_used_tags(status)
   todo_id = str(todo_id)
-  return render_template("index.html", todos=todos, status_to_show=status, comments=False, id_comments=todo_id, ids_to_remind=lto_remind, used_tags1=lused_tags1, used_tags2=lused_tags2, tag_filter=None, )
+  return render_template("index.html", todos=todos, status_to_show=status, comments=False, id_comments=todo_id, ids_to_remind=lto_remind, used_tags1=lused_tags1, used_tags2=lused_tags2, used_tags3=lused_tags3, tag_filter=None, )
 
 
 @app.route("/todo/edit/<int:todo_id>", methods=["GET", "POST"])
@@ -251,19 +261,19 @@ def create_todo():
   return redirect("/open")
 
 
-@app.route("/tag/<tag>")
-def filter_by_tag(tag, comments=False):
+@app.route("/<status>/tag/<tag>")
+def filter_by_tag(status, tag, comments=False):
   lto_remind = get_ids_to_remind()
-  lused_tags1, lused_tags2 = get_used_tags()
-  return render_template("tag.html", todos=todos, comments=comments, id_comments=None, ids_to_remind=lto_remind, used_tags1=lused_tags1, used_tags2=lused_tags2, tag_filter=tag, )
+  lused_tags1, lused_tags2, lused_tags3 = get_used_tags(status)
+  return render_template("tag.html", todos=todos, status_to_show=status, comments=comments, id_comments=None, ids_to_remind=lto_remind, used_tags1=lused_tags1, used_tags2=lused_tags2, used_tags3=lused_tags3, tag_filter=tag, )
 
 
-@app.route("/<tag>/<int:todo_id>")
-def one_comments_tag(tag, todo_id):
+@app.route("/<status>/<tag>/<int:todo_id>")
+def one_comments_tag(status, tag, todo_id):
   lto_remind = get_ids_to_remind()
-  lused_tags1, lused_tags2 = get_used_tags()
+  lused_tags1, lused_tags2, lused_tags3 = get_used_tags(status)
   todo_id = str(todo_id)
-  return render_template("tag.html", todos=todos, comments=False, id_comments=todo_id, ids_to_remind=lto_remind, used_tags1=lused_tags1, used_tags2=lused_tags2, tag_filter=tag, )
+  return render_template("tag.html", todos=todos, status_to_show=status, comments=False, id_comments=todo_id, ids_to_remind=lto_remind, used_tags1=lused_tags1, used_tags2=lused_tags2, used_tags3=lused_tags3, tag_filter=tag, )
 
 
 # @app.route("/tag/<tag>/<int:todo_id>/<status>")
