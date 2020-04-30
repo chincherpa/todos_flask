@@ -21,6 +21,8 @@
 
     {% if 'high' in todo.tags or 'hot' in todo.tags %}
       <td id="no_underline_high" style="width:600px">
+    {% elif 'vr' in todo.tags or 'VR' in todo.tags %}
+      <td id="no_underline_yellow" style="width:600px">VR0
     {% else %}
       <td style="width:600px">
     {% endif %}
@@ -107,6 +109,8 @@
 
       {% if 'high' in todo.tags or 'hot' in todo.tags %}
         <td id="no_underline_high" style="width:600px">
+      {% elif 'vr' in todo.tags or 'VR' in todo.tags %}
+        <td id="no_underline_yellow" style="width:600px">VR
       {% else %}
         <td id="no_underline" style="width:600px">
       {% endif %}

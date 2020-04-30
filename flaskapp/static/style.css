@@ -83,6 +83,22 @@ a:hover {
   text-decoration: underline;
 }
 
+#no_underline_yellow {
+  color: #ffff00;
+}
+
+#no_underline_yellow a{
+  color: #ffff00;
+  padding: 0;
+  background-image: none;
+  background-position: 0 100%;
+}
+
+#no_underline_yellow a:hover{
+  text-transform: none;
+  text-decoration: underline;
+}
+
 #privat, #notprivat {
   line-height: 12pt;
 }
