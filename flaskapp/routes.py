@@ -72,14 +72,11 @@ def get_used_tags(status):
   lused_tags2 = []
   lused_tags3 = []
 
-  print(f"{len(lused_tags1)=}")
   if len(lused_tags) >= 12:
-    print("get_used_tags 1")
     lused_tags1 = lused_tags[:len(lused_tags) // 2]
     lused_tags2 = lused_tags[len(lused_tags) // 2:]
 
   if len(lused_tags) >= 18:
-    print("get_used_tags 2")
     lused_tags1 = lused_tags[:len(lused_tags) // 3]
     lused_tags2 = lused_tags[len(lused_tags) // 3:len(lused_tags) - (len(lused_tags) // 3)]
     lused_tags3 = lused_tags[len(lused_tags) - (len(lused_tags) // 3):]
