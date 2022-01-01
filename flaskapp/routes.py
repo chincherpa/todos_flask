@@ -14,16 +14,6 @@ global todos
 path_to_js = os.path.join(APP_STATIC, "todos.json")
 
 
-@app.route("/favicon.ico")
-def favicon():
-  return send_from_directory(os.path.join(app.root_path, "static"), "favicon.ico", mimetype="image/vnd.microsoft.icon")
-
-
-def dump_todos_to_json():
-  with open(path_to_js, "w") as f:
-    json.dump(todos, f, indent=2)
-
-
 def load_json():
   try:
     with open(path_to_js, "r") as jsf:
@@ -35,6 +25,16 @@ def load_json():
 
 
 todos = load_json()
+
+
+@app.route("/favicon.ico")
+def favicon():
+  return send_from_directory(os.path.join(app.root_path, "static"), "favicon.ico", mimetype="image/vnd.microsoft.icon")
+
+
+def dump_todos_to_json():
+  with open(path_to_js, "w") as f:
+    json.dump(todos, f, indent=2)
 
 
 def get_ids_to_remind():
@@ -230,10 +230,6 @@ def reopen_todo(todo_id):
   return redirect("/open")
 
 
-def get_num_of_todos():
-  return len(todos)
-
-
 @app.route("/new_todo", methods=["POST"])
 def create_todo():
   new_title = request.form["new_todo_title"]
@@ -244,8 +240,8 @@ def create_todo():
 
   new_todo_reminder = request.form["new_todo_reminder"]
 
-  new_id = str(get_num_of_todos() + 1)
-  print(get_num_of_todos())
+  new_id = str(len(todos) + 1)
+  print(len(todos))
   print(f"{new_id = }")
   todos[new_id] = {
       "id": new_id,
