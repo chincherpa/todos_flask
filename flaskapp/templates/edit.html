@@ -6,6 +6,7 @@
   <form method="POST" action="/todo/edit/{{ todo.id }}">
   <div>
     <pre>title		<input type="text" class="textbox" name="title" size="75" value="{{ todo.title }}"></pre>
+    <h3>added {{ todo.date_added }}</h3>
 
     {% if todo.comments|length > 0 %}
       {% for comment in todo.comments %}

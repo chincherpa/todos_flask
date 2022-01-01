@@ -6,6 +6,7 @@
 <form method="POST" action="/todo/close/{{ todo.id }}">
   <div>
     <h2>{{ todo.id }} - {{ todo.title }}</h2>
+    <h3>added {{ todo.date_added }}</h3>
 
     {% if todo.comments|length > 0 %}
       {% for comment in todo.comments %}

@@ -66,7 +66,7 @@
 {% if todo.id == id_comments %}
   <a href="{{ url_for('filter_by_tag', status=status_to_show, tag=tag_filter) }}">X{{ todo.title }}</a>
 {% else %}
-  <a href="{{ url_for('one_comments_tag', status=status_to_show, tag=tag_filter, todo_id=todo.id) }}">Y{{ todo.title }}</a>
+  <a href="{{ url_for('one_comments_tag', status=status_to_show, tag=tag_filter, todo_id=todo.id) }}">{{ todo.title }}</a>
 {% endif %}
 </td>
 <td>

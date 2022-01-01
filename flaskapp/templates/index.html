@@ -7,7 +7,7 @@
   <h2>upcoming todos</h2>
 
   <table id="upcoming">
-  {% for id, todo in todos.todos.items() %}
+  {% for id, todo in todos.items() %}
     {% if todo.id in ids_to_remind and todo.status == "open" %}
     <tr>
       {% if status_to_show == "open" %}
@@ -17,7 +17,7 @@
         <td><a href="{{ url_for('reopen_todo', todo_id=todo.id) }}">&nbsp;open&nbsp;</a></td>
         <td></td>
       {% endif %}
-    <td>{{ todo.id }}</td>
+    <td>{{ todo.id }}&nbsp;</td>
 
     {% if 'high' in todo.tags or 'hot' in todo.tags %}
       <td id="no_underline_high" style="width:600px">
@@ -42,7 +42,7 @@
 {% endif %}
 
 <table id="privat">
-  {% for _TODOID_, todo in todos.todos.items() %}
+  {% for _TODOID_, todo in todos.items() %}
     {% if todo.status == status_to_show and 'privat' in todo.tags %}
       <tr>
       {% if status_to_show == "open" %}
@@ -52,7 +52,7 @@
         <td><a href="{{ url_for('reopen_todo', todo_id=todo.id) }}">&nbsp;open&nbsp;</a></td>
         <td></td>
       {% endif %}
-      <td>{{ todo.id }}</td>
+      <td>{{ todo.id }}&nbsp;</td>
 
       {% if 'high' in todo.tags or 'hot' in todo.tags %}
         <td id="no_underline_high" style="width:600px">
@@ -95,7 +95,7 @@
 </table>
 <hr width="90%" color="#0f0" size="1">
 <table id="notprivat">
-  {% for _TODOID_, todo in todos.todos.items() %}
+  {% for _TODOID_, todo in todos.items() %}
     {% if todo.status == status_to_show and 'privat' not in todo.tags %}
       <tr>
       {% if status_to_show == "open" %}
@@ -105,7 +105,7 @@
         <td><a href="{{ url_for('reopen_todo', todo_id=todo.id) }}">&nbsp;open&nbsp;</a></td>
         <td></td>
       {% endif %}
-      <td>{{ todo.id }}</td>
+      <td>{{ todo.id }}&nbsp;</td>
 
       {% if 'high' in todo.tags or 'hot' in todo.tags %}
         <td id="no_underline_high" style="width:600px">
