@@ -5,31 +5,32 @@
 <p><a id="new_todo">&nbsp;new todo&nbsp;</a></p>
 {% if status_to_show == "open" and ids_to_remind|length > 0 %}
   <h1>upcoming todos</h1>
-
   <table id="upcoming">
-  {% for id, todo in todos.items() %}
-    {% if todo.id in ids_to_remind and todo.status == "open" %}
-    <tr>
-      {% if status_to_show == "open" %}
-        <td><a href="{{ url_for('close_todo', todo_id=todo.id) }}">&nbsp;close&nbsp;</a></td>
-        <td><a href="{{ url_for('edit_todo', todo_id=todo.id) }}">&nbsp;edit&nbsp;</a></td>
-      {% else %}
-        <td><a href="{{ url_for('reopen_todo', todo_id=todo.id) }}">&nbsp;open&nbsp;</a></td>
-        <td></td>
-      {% endif %}
-    <td>{{ todo.id }}&nbsp;</td>
+    {% for id, todo in todos.items() %}
+      {% if todo.id in ids_to_remind and todo.status == "open" %}
+      <tr>
+        {% if status_to_show == "open" %}
+          <td><a href="{{ url_for('close_todo', todo_id=todo.id) }}">&nbsp;close&nbsp;</a></td>
+          <td><a href="{{ url_for('edit_todo', todo_id=todo.id) }}">&nbsp;edit&nbsp;</a></td>
+        {% else %}
+          <td><a href="{{ url_for('reopen_todo', todo_id=todo.id) }}">&nbsp;open&nbsp;</a></td>
+          <td></td>
+        {% endif %}
+        {# TODO ID nicht nehr zeigen #}
+        {# <td>{{ todo.id }}&nbsp;</td> #}
 
-    {% if 'high' in todo.tags or 'hot' in todo.tags %}
-      <td id="no_underline_high" style="width:600px">
-    {% elif 'vr' in todo.tags or 'VR' in todo.tags %}
-      <td id="no_underline_yellow" style="width:600px">
-    {% else %}
-      <td style="width:600px">
-    {% endif %}
-      {{ todo.title }}
-    </td></tr>
-  {% endif %}
-      {% endfor %}
+        {% if 'high' in todo.tags or 'hot' in todo.tags %}
+          <td id="no_underline_high" style="width:600px">
+        {% elif 'vr' in todo.tags or 'VR' in todo.tags %}
+          <td id="no_underline_yellow" style="width:600px">
+        {% else %}
+          <td style="width:600px">
+        {% endif %}
+        {{ todo.title }}
+        </td>
+      </tr>
+      {% endif %}
+    {% endfor %}
   </table>
 {% endif %}
 
@@ -52,7 +53,8 @@
         <td><a href="{{ url_for('reopen_todo', todo_id=todo.id) }}">&nbsp;open&nbsp;</a></td>
         <td></td>
       {% endif %}
-      <td>{{ todo.id }}&nbsp;</td>
+      {# TODO ID nicht mehr anzeigen #}
+      {# <td>{{ todo.id }}&nbsp;</td> #}
 
       {% if 'high' in todo.tags or 'hot' in todo.tags %}
         <td id="no_underline_high" style="width:600px">
@@ -80,15 +82,27 @@
         {% for comment in todo.comments %}
         <tr>
           {% if loop.index == 1 %}
-            <td colspan="2" style="width: 1px; white-space: nowrap;">{% if todo.rem_time|length > 0 %}{{ todo.rem_time }}{% endif %}</td>
+            <td colspan="2" style="color: yellow; width: 1px; white-space: nowrap;">{% if todo.rem_time|length > 0 %}{{ todo.rem_time }}{% endif %}</td>
           {% else %}
-            <td></td><td></td>
+            <td></td>
+            <td></td>
           {% endif %}
-            <td></td><td style="color: white">&nbsp;- {{ comment[0] }}</td><td style="width: 1px; white-space: nowrap;">{{ comment[1] }}</td></tr>
+          {# TODO ID nicht mehr anzeigen #}
+          {# <td></td> #}
+          <td style="color: white">&nbsp;- {{ comment[0] }}</td>
+          <td style="width: 1px; white-space: nowrap;">{{ comment[1] }}</td>
+        </tr>
         {% endfor %}
         {% if todo.tags|length > 0 %}
-          <tr><td></td><td></td><td></td><td style="color: rgb(168, 168, 0)">&nbsp;{% for tag in todo.tags %}*{{ tag }} {% endfor %}</td><td></td></tr>
-        {% endif %}
+        <tr>
+          <td></td>
+          <td></td>
+          {# TODO ID nicht mehr anzeigen #}
+          {# <td></td> #}
+          <td style="color: rgb(168, 168, 0)">&nbsp;{% for tag in todo.tags %}*{{ tag }} {% endfor %}</td>
+          <td></td>
+        </tr>
+      {% endif %}
       {% endif %}
     {% endif %}
   {% endfor %}
@@ -105,7 +119,7 @@
         <td><a href="{{ url_for('reopen_todo', todo_id=todo.id) }}">&nbsp;open&nbsp;</a></td>
         <td></td>
       {% endif %}
-      <td>{{ todo.id }}&nbsp;</td>
+      {# <td>{{ todo.id }}&nbsp;</td> #}
 
       {% if 'high' in todo.tags or 'hot' in todo.tags %}
         <td id="no_underline_high" style="width:600px">
@@ -135,14 +149,27 @@
         {% for comment in todo.comments %}
         <tr>
           {% if loop.index == 1 %}
-            <td colspan="2" style="width: 1px; white-space: nowrap;">{% if todo.rem_time|length > 0 %}{{ todo.rem_time }}{% endif %}</td>
+            {# die ersten 2 Spalten zu einer #}
+            <td colspan="2" style="color: yellow; width: 1px; white-space: nowrap;">{% if todo.rem_time|length > 0 %}{{ todo.rem_time }}{% endif %}</td>
           {% else %}
-            <td></td><td></td>
+            <td></td>
+            <td></td>
           {% endif %}
-          <td></td><td style="color: white">&nbsp;- {{ comment[0] }}</td><td style="width: 1px; white-space: nowrap;">{{ comment[1] }}</td></tr>
+          {# TODO ID nicht mehr anzeigen #}
+          {# <td></td> #}
+          <td style="color: white">&nbsp;- {{ comment[0] }}</td>
+          <td style="width: 1px; white-space: nowrap;">{{ comment[1] }}</td>
+        </tr>
         {% endfor %}
         {% if todo.tags|length > 0 %}
-          <tr><td></td><td></td><td></td><td style="color: rgb(168, 168, 0)">&nbsp;{% for tag in todo.tags %}*{{ tag }} {% endfor %}</td><td></td></tr>
+          <tr>
+            <td></td>
+            <td></td>
+            {# TODO ID nicht mehr anzeigen #}
+            {# <td></td> #}
+            <td style="color: rgb(168, 168, 0)">&nbsp;{% for tag in todo.tags %}*{{ tag }} {% endfor %}</td>
+            <td></td>
+          </tr>
         {% endif %}
       {% endif %}
     {% endif %}
