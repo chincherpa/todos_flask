@@ -2,6 +2,7 @@ import datetime
 import json
 import os
 import sys
+from hashlib import sha256
 
 from flask import redirect, render_template, request, send_from_directory, url_for
 from flaskapp import app
@@ -54,7 +55,7 @@ def get_ids_to_remind():
 
 
 def get_used_tags(status):
-  tags_per_line = 8
+  tags_per_line = 10
   set_tags = set()
 
   for _, todo in todos.items():
@@ -84,44 +85,89 @@ def get_used_tags(status):
   return lused_tags1, lused_tags2, lused_tags3
 
 
-#@app.route("/")
+# @app.route("/")
 @app.route("/open")
 def index():
   lto_remind = get_ids_to_remind()
   lused_tags1, lused_tags2, lused_tags3 = get_used_tags("open")
-  return render_template("index.html", todos=todos, status_to_show="open", comments=False, id_comments=None, ids_to_remind=lto_remind, used_tags1=lused_tags1, used_tags2=lused_tags2, used_tags3=lused_tags3, tag_filter=None, )
+  return render_template("index.html",
+                         todos=todos,
+                         status_to_show="open",
+                         comments=False,
+                         id_comments=None,
+                         ids_to_remind=lto_remind,
+                         used_tags1=lused_tags1,
+                         used_tags2=lused_tags2,
+                         used_tags3=lused_tags3,
+                         tag_filter=None
+                         )
 
 
 # Route for handling the login page logic
 @app.route("/")
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    error = None
-    if request.method == 'POST':
-        if request.form['username'].lower() != 'lulef' or request.form['password'] != 'yxasqw12':
-            error = 'Invalid Credentials. Please try again.'
-        else:
-            return redirect(url_for('index'))
-    return render_template('login.html', error=error)
+  error = None
+  if request.method == 'POST':
+    user_sha256 = 'de11208170d9a39e8a2bb24fa3c04754c7b6239fade620610c0f02a0a7e40f5b'
+    pw_sha256 = '1faf6737582356f5d756761b11f7968acacf231fa3c57b5be76d8aba1e925189'
+    input_user = request.form['username'].lower()
+    input_pw = request.form['password']
+    input_user_sha256 = sha256(input_user.encode('utf-8')).hexdigest()
+    input_pw_sha256 = sha256(input_pw.encode('utf-8')).hexdigest()
+    if input_user_sha256 != user_sha256 or input_pw_sha256 != pw_sha256:
+      error = 'Invalid Credentials. Please try again.'
+    else:
+      return redirect(url_for('index'))
+  return render_template('login.html', error=error)
 
 
 @app.route("/closed")
 def closed():
   lused_tags1, lused_tags2, lused_tags3 = get_used_tags("closed")
-  return render_template("index.html", todos=todos, status_to_show="closed", comments=False, id_comments=None, ids_to_remind=[], used_tags1=lused_tags1, used_tags2=lused_tags2, used_tags3=lused_tags3, tag_filter=None, )
+  return render_template("index.html",
+                         todos=todos,
+                         status_to_show="closed",
+                         comments=False,
+                         id_comments=None,
+                         ids_to_remind=[],
+                         used_tags1=lused_tags1,
+                         used_tags2=lused_tags2,
+                         used_tags3=lused_tags3,
+                         tag_filter=None,
+                         )
 
 
 @app.route("/open_comments")
 def open_c():
   lto_remind = get_ids_to_remind()
   lused_tags1, lused_tags2, lused_tags3 = get_used_tags("open")
-  return render_template("index.html", todos=todos, status_to_show="open", comments=True, id_comments=None, ids_to_remind=lto_remind, used_tags1=lused_tags1, used_tags2=lused_tags2, used_tags3=lused_tags3, tag_filter=None)
+  return render_template("index.html",
+                         todos=todos,
+                         status_to_show="open",
+                         comments=True,
+                         id_comments=None,
+                         ids_to_remind=lto_remind,
+                         used_tags1=lused_tags1,
+                         used_tags2=lused_tags2,
+                         used_tags3=lused_tags3,
+                         tag_filter=None)
 
 
 @app.route("/closed_comments")
 def closed_c():
   lused_tags1, lused_tags2, lused_tags3 = get_used_tags("closed")
-  return render_template("index.html", todos=todos, status_to_show="closed", comments=True, id_comments=None, ids_to_remind=[], used_tags1=lused_tags1, used_tags2=lused_tags2, used_tags3=lused_tags3, tag_filter=None)
+  return render_template("index.html",
+                         todos=todos,
+                         status_to_show="closed",
+                         comments=True,
+                         id_comments=None,
+                         ids_to_remind=[],
+                         used_tags1=lused_tags1,
+                         used_tags2=lused_tags2,
+                         used_tags3=lused_tags3,
+                         tag_filter=None
+                         )
 
 
 @app.route("/<status>/one_comments/<int:todo_id>")
@@ -129,7 +175,17 @@ def one_comments(status, todo_id):
   lto_remind = get_ids_to_remind()
   lused_tags1, lused_tags2, lused_tags3 = get_used_tags(status)
   todo_id = str(todo_id)
-  return render_template("index.html", todos=todos, status_to_show=status, comments=False, id_comments=todo_id, ids_to_remind=lto_remind, used_tags1=lused_tags1, used_tags2=lused_tags2, used_tags3=lused_tags3, tag_filter=None, )
+  return render_template("index.html",
+                         todos=todos,
+                         status_to_show=status,
+                         comments=False,
+                         id_comments=todo_id,
+                         ids_to_remind=lto_remind,
+                         used_tags1=lused_tags1,
+                         used_tags2=lused_tags2,
+                         used_tags3=lused_tags3,
+                         tag_filter=None
+                         )
 
 
 @app.route("/todo/edit/<int:todo_id>", methods=["GET", "POST"])
@@ -244,14 +300,14 @@ def create_todo():
   print(len(todos))
   print(f"{new_id = }")
   todos[new_id] = {
-      "id": new_id,
-      "title": new_title,
-      "status": "open",
-      "comments": [],
-      "tags": lnew_tags,
-      "result": "",
-      "date_added": str(datetime.date.today()),
-      "rem_time": new_todo_reminder,
+    "id": new_id,
+    "title": new_title,
+    "status": "open",
+    "comments": [],
+    "tags": lnew_tags,
+    "result": "",
+    "date_added": str(datetime.date.today()),
+    "rem_time": new_todo_reminder,
   }
   dump_todos_to_json()
   return redirect("/open")
@@ -261,7 +317,17 @@ def create_todo():
 def filter_by_tag(status, tag, comments=False):
   lto_remind = get_ids_to_remind()
   lused_tags1, lused_tags2, lused_tags3 = get_used_tags(status)
-  return render_template("tag.html", todos=todos, status_to_show=status, comments=comments, id_comments=None, ids_to_remind=lto_remind, used_tags1=lused_tags1, used_tags2=lused_tags2, used_tags3=lused_tags3, tag_filter=tag, )
+  return render_template("tag.html",
+                         todos=todos,
+                         status_to_show=status,
+                         comments=comments,
+                         id_comments=None,
+                         ids_to_remind=lto_remind,
+                         used_tags1=lused_tags1,
+                         used_tags2=lused_tags2,
+                         used_tags3=lused_tags3,
+                         tag_filter=tag
+                         )
 
 
 @app.route("/<status>/<tag>/<int:todo_id>")
@@ -269,7 +335,17 @@ def one_comments_tag(status, tag, todo_id):
   lto_remind = get_ids_to_remind()
   lused_tags1, lused_tags2, lused_tags3 = get_used_tags(status)
   todo_id = str(todo_id)
-  return render_template("tag.html", todos=todos, status_to_show=status, comments=False, id_comments=todo_id, ids_to_remind=lto_remind, used_tags1=lused_tags1, used_tags2=lused_tags2, used_tags3=lused_tags3, tag_filter=tag, )
+  return render_template("tag.html",
+                         todos=todos,
+                         status_to_show=status,
+                         comments=False,
+                         id_comments=todo_id,
+                         ids_to_remind=lto_remind,
+                         used_tags1=lused_tags1,
+                         used_tags2=lused_tags2,
+                         used_tags3=lused_tags3,
+                         tag_filter=tag
+                         )
 
 
 # @app.route("/tag/<tag>/<int:todo_id>/<status>")

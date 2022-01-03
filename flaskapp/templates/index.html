@@ -4,7 +4,7 @@
 
 <p><a id="new_todo">&nbsp;new todo&nbsp;</a></p>
 {% if status_to_show == "open" and ids_to_remind|length > 0 %}
-  <h2>upcoming todos</h2>
+  <h1>upcoming todos</h1>
 
   <table id="upcoming">
   {% for id, todo in todos.items() %}
